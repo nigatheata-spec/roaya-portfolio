@@ -1,11 +1,14 @@
 export const studio = {
   name: 'Roaya',
   arabicName: 'رؤية',
-  tagline: 'A media house in Riyadh',
+  tagline: 'Film, documentary, and media production',
   city: 'Riyadh, Saudi Arabia',
-  email: 'hello@roaya.sa',
-  phone: '+966 11 000 0000',
+  // TODO: confirm post-rebrand contact details. These carry over from Onoria.
+  email: 'info@onoria.com',
+  phone: '+90 537 960 6350',
+  vimeo: 'https://vimeo.com/usamaesam',
   founded: 2018,
+  formerly: 'Onoria Solutions',
 };
 
 export interface NavItem {
@@ -20,94 +23,233 @@ export const navItems: NavItem[] = [
   { label: 'Contact', to: '/contact' },
 ];
 
+export type Discipline = 'Documentary' | 'Drama' | 'Advertising' | 'Promo' | 'VFX';
+
 export interface Project {
   slug: string;
   title: string;
-  client: string;
-  year: string;
-  discipline: string;
+  client?: string;
+  runtime: string;
+  discipline: Discipline;
   summary: string;
-  /** Drop the real file at this path under /public and it renders automatically. */
   poster: string;
   video?: string;
-  aspect: string;
-  scale: 'wide' | 'tall' | 'square';
+  featured?: boolean;
 }
 
+/**
+ * Real catalogue carried over from onoria.solutions. Posters were pulled from the
+ * old site; summaries are descriptive placeholders pending sign-off.
+ */
 export const projects: Project[] = [
   {
-    slug: 'diriyah-nights',
-    title: 'Diriyah Nights',
-    client: 'Diriyah Gate Authority',
-    year: '2025',
-    discipline: 'Brand Film',
-    summary:
-      'A nine-minute film tracing the mud-brick walls of At-Turaif from first light to the last call of the evening.',
-    poster: '/media/work/diriyah-nights.jpg',
-    video: '/media/work/diriyah-nights.mp4',
-    aspect: '16 / 9',
-    scale: 'wide',
-  },
-  {
-    slug: 'the-long-red',
-    title: 'The Long Red',
-    client: 'Saudi Tourism Authority',
-    year: '2025',
+    slug: 'jamal-khashoggi',
+    title: 'Jamal Khashoggi',
+    runtime: '22:31',
     discipline: 'Documentary',
     summary:
-      'Four weeks across the Empty Quarter with two cameras, one guide, and no shot list.',
-    poster: '/media/work/the-long-red.jpg',
-    aspect: '4 / 5',
-    scale: 'tall',
+      'Long-form documentary reconstructing the events surrounding the journalist’s disappearance.',
+    poster: '/media/work/jamal-khashoggi.jpg',
+    featured: true,
   },
   {
-    slug: 'qiddiya-launch',
-    title: 'Qiddiya Launch',
-    client: 'Qiddiya Investment Company',
-    year: '2024',
-    discipline: 'Broadcast',
+    slug: 'egypt-between-two-armies',
+    title: 'Egypt Between Two Armies',
+    runtime: '14:28',
+    discipline: 'Documentary',
     summary:
-      'Twelve camera positions, a live orchestral score, and a broadcast package delivered in under six hours.',
-    poster: '/media/work/qiddiya-launch.jpg',
-    aspect: '16 / 9',
-    scale: 'wide',
+      'A feature-length examination of Egypt’s military institutions and the decade that reshaped them.',
+    poster: '/media/work/egypt-between-two-armies.jpg',
+    featured: true,
   },
   {
-    slug: 'house-of-oud',
-    title: 'House of Oud',
-    client: 'Abdul Samad Al Qurashi',
-    year: '2024',
-    discipline: 'Product Film',
+    slug: 'story-of-sunnah-albukhary',
+    title: 'Story of Sunnah Albukhary',
+    runtime: '23:55',
+    discipline: 'Documentary',
     summary:
-      'Macro cinematography on a motion-control rig, shot at 1000fps to hold the moment resin meets heat.',
-    poster: '/media/work/house-of-oud.jpg',
-    aspect: '1 / 1',
-    scale: 'square',
+      'The longest film in the catalogue, tracing the compilation and transmission of a foundational text.',
+    poster: '/media/work/story-of-sunnah-albukhary.jpg',
+    featured: true,
   },
   {
-    slug: 'red-sea-crossing',
-    title: 'Red Sea Crossing',
-    client: 'NEOM',
-    year: '2024',
-    discipline: 'Aerial',
-    summary:
-      'Drone and helicopter plates covering 340km of coastline for a campaign that never repeats a frame.',
-    poster: '/media/work/red-sea-crossing.jpg',
-    aspect: '4 / 5',
-    scale: 'tall',
+    slug: 'badr-2000',
+    title: 'BADR 2000 Project',
+    runtime: '10:13',
+    discipline: 'Documentary',
+    summary: 'Project documentary produced across multiple locations and shooting blocks.',
+    poster: '/media/work/badr-2000.jpg',
+    featured: true,
   },
   {
-    slug: 'ninety-three',
-    title: 'Ninety-Three',
-    client: 'Saudi National Day',
-    year: '2023',
-    discipline: 'Campaign',
-    summary:
-      'A national spot cut three ways for cinema, broadcast, and a nine-metre LED facade on King Fahd Road.',
-    poster: '/media/work/ninety-three.jpg',
-    aspect: '16 / 9',
-    scale: 'wide',
+    slug: 'rabaa-massacre',
+    title: 'Rabaa Massacre',
+    runtime: '01:20',
+    discipline: 'Documentary',
+    summary: 'Short-form archival piece assembled from footage of the events at Rabaa.',
+    poster: '/media/work/rabaa-massacre.jpg',
   },
+  {
+    slug: 'in-love-of-quds',
+    title: 'In Love of Quds',
+    runtime: '03:29',
+    discipline: 'Documentary',
+    summary: 'A short film on Jerusalem, its architecture, and the people who hold it.',
+    poster: '/media/work/in-love-of-quds.jpg',
+  },
+  {
+    slug: 'al-aqsa-al-imam',
+    title: 'Al Aqsa & Al Imam',
+    runtime: '00:48',
+    discipline: 'Documentary',
+    summary: 'A short portrait piece shot on location.',
+    poster: '/media/work/al-aqsa-al-imam.jpg',
+  },
+  {
+    slug: 'berberas-hunter',
+    title: "Berbera's Hunter",
+    runtime: '01:36',
+    discipline: 'Documentary',
+    summary: 'Observational short following a hunter on the Somali coast.',
+    poster: '/media/work/berberas-hunter.jpg',
+  },
+  {
+    slug: 'omar-kafi',
+    title: 'Omar Kafi',
+    runtime: '03:52',
+    discipline: 'Drama',
+    summary: 'Scripted short-form drama.',
+    poster: '/media/work/omar-kafi.jpg',
+  },
+  {
+    slug: 'al-warsha',
+    title: 'Al-Warsha',
+    client: 'Ahmed Amin',
+    runtime: '00:58',
+    discipline: 'Drama',
+    summary: 'Scripted piece produced with Ahmed Amin.',
+    poster: '/media/work/al-warsha.jpg',
+  },
+  {
+    slug: 'alrihla-world-cup',
+    title: 'Discovering Alrihla',
+    client: 'Al Jazeera',
+    runtime: '00:31',
+    discipline: 'Promo',
+    summary: 'World Cup broadcast promo produced for Al Jazeera.',
+    poster: '/media/work/alrihla-world-cup.jpg',
+    featured: true,
+  },
+  {
+    slug: 'shjseen-hyperlapses',
+    title: 'ShjSeen Hyperlapses',
+    runtime: '03:38',
+    discipline: 'Promo',
+    summary: 'Hyperlapse-driven city promo, the longest promo in the catalogue.',
+    poster: '/media/work/shjseen-hyperlapses.jpg',
+  },
+  {
+    slug: 'cbot-robolabs',
+    title: 'CBot',
+    client: 'Robolabs',
+    runtime: '00:59',
+    discipline: 'Advertising',
+    summary: 'Product commercial for a consumer robotics launch.',
+    poster: '/media/work/cbot-robolabs.jpg',
+  },
+  {
+    slug: 'altar-solar',
+    title: 'Altar Solar Energy',
+    runtime: '01:42',
+    discipline: 'Advertising',
+    summary: 'Corporate film for a renewable energy operator.',
+    poster: '/media/work/altar-solar.jpg',
+  },
+  {
+    slug: 'total-yogurt',
+    title: 'Generation Imagination',
+    client: 'Total Yogurt',
+    runtime: '00:52',
+    discipline: 'Advertising',
+    summary: 'Consumer brand spot built around a children’s imagination premise.',
+    poster: '/media/work/total-yogurt.jpg',
+  },
+  {
+    slug: 'rekaz',
+    title: 'Rekaz',
+    runtime: '01:15',
+    discipline: 'Advertising',
+    summary: 'Brand commercial.',
+    poster: '/media/work/rekaz.jpg',
+  },
+  {
+    slug: 'ghayeb',
+    title: 'Ghayeb',
+    runtime: '00:33',
+    discipline: 'Promo',
+    summary: 'Campaign promo, including behind-the-scenes coverage.',
+    poster: '/media/work/ghayeb.jpg',
+  },
+  {
+    slug: 'promo-minimalism',
+    title: 'Minimalism',
+    runtime: '00:41',
+    discipline: 'Promo',
+    summary: 'Promo built entirely on minimalist composition and graphic staging.',
+    poster: '/media/work/promo-minimalism.jpg',
+  },
+  {
+    slug: 'lego-vfx-bridge',
+    title: 'LEGO Bridge',
+    runtime: '02:00',
+    discipline: 'VFX',
+    summary: 'Visual effects build and compositing piece.',
+    poster: '/media/work/lego-vfx-bridge.jpg',
+  },
+];
+
+export const disciplines: (Discipline | 'All')[] = [
+  'All',
+  'Documentary',
+  'Drama',
+  'Advertising',
+  'Promo',
+  'VFX',
+];
+
+/** Only names that actually appear as clients in the catalogue above. */
+export const clients = [
+  'Al Jazeera',
+  'Robolabs',
+  'Total Yogurt',
+  'Rekaz',
+  'Altar Solar Energy',
+  'ShjSeen',
+  'Ahmed Amin',
+];
+
+const runtimeToMinutes = (r: string) => {
+  const [m, s] = r.split(':').map(Number);
+  return m + s / 60;
+};
+
+/**
+ * Derived from `projects` rather than asserted, so the figures cannot drift away
+ * from the work actually listed on the site.
+ */
+export const metrics = [
+  { value: projects.length, suffix: '', label: 'Films in this selection' },
+  {
+    value: projects.filter((p) => p.discipline === 'Documentary').length,
+    suffix: '',
+    label: 'Documentaries',
+  },
+  {
+    value: Math.round(projects.reduce((sum, p) => sum + runtimeToMinutes(p.runtime), 0)),
+    suffix: ' min',
+    label: 'Total runtime',
+  },
+  { value: disciplines.length - 1, suffix: '', label: 'Disciplines covered' },
 ];
 
 export interface Service {
@@ -120,80 +262,59 @@ export interface Service {
 export const services: Service[] = [
   {
     index: '01',
-    title: 'Film & Direction',
+    title: 'Documentary',
     description:
-      'Concept through final grade. We write, direct, and shoot brand films, documentaries, and campaign spots with our own crew and kit.',
-    deliverables: ['Creative direction', 'Scripting', 'Principal photography', 'Colour grade'],
+      'Long and short-form documentary, from research and access through to final delivery. The bulk of our catalogue sits here.',
+    deliverables: ['Research', 'Field production', 'Archive', 'Long-form edit'],
   },
   {
     index: '02',
-    title: 'Broadcast & Live',
+    title: 'Advertising',
     description:
-      'Multi-camera coverage for launches, conferences, and national moments, with same-day turnarounds when the schedule demands it.',
-    deliverables: ['Multi-cam capture', 'Live switching', 'Rapid edit', 'Distribution masters'],
+      'Commercials and brand films for consumer, industrial, and technology clients.',
+    deliverables: ['Concept', 'Direction', 'Production', 'Delivery'],
   },
   {
     index: '03',
-    title: 'Post & Finishing',
+    title: 'Promos & Shorts',
     description:
-      'A finishing suite built for long-form. Offline, online, sound design, and delivery specs for every regional broadcaster.',
-    deliverables: ['Offline edit', 'VFX & clean-up', 'Sound design', 'Deliverable QC'],
+      'Broadcast promos and short-form pieces, including work delivered for regional networks.',
+    deliverables: ['Broadcast promos', 'Short form', 'Cutdowns', 'Social variants'],
   },
   {
     index: '04',
-    title: 'Photography',
-    description:
-      'Stills that sit beside the film rather than beneath it. Campaign, editorial, architectural, and product.',
-    deliverables: ['Campaign stills', 'Editorial', 'Architectural', 'Retouch'],
+    title: 'Drama',
+    description: 'Scripted short-form drama, developed and produced in-house.',
+    deliverables: ['Development', 'Scripting', 'Casting', 'Production'],
   },
   {
     index: '05',
-    title: 'Content Systems',
+    title: 'VFX & Post',
     description:
-      'One shoot, forty deliverables. We plan the cutdowns, verticals, and social variants before the camera turns over.',
-    deliverables: ['Content planning', 'Vertical cutdowns', 'Motion graphics', 'Asset libraries'],
+      'Visual effects, compositing, and finishing, handled alongside the edit rather than bolted on afterwards.',
+    deliverables: ['VFX', 'Compositing', 'Grade', 'Sound'],
   },
   {
     index: '06',
-    title: 'Strategy',
+    title: 'Media & PR',
     description:
-      'The thinking that decides what is worth filming. Audience work, narrative platforms, and channel planning.',
-    deliverables: ['Audience research', 'Narrative platform', 'Channel plan', 'Measurement'],
+      'Narrative strategy and media relations, carried over from the studio’s work as a media PR house.',
+    deliverables: ['Narrative strategy', 'Media relations', 'Campaign planning'],
   },
-];
-
-export const metrics = [
-  { value: 240, suffix: '+', label: 'Films delivered' },
-  { value: 18, suffix: '', label: 'Countries shot in' },
-  { value: 96, suffix: '%', label: 'Client retention' },
-  { value: 34, suffix: '', label: 'People on staff' },
-];
-
-export const clients = [
-  'NEOM',
-  'Qiddiya',
-  'Diriyah',
-  'Saudi Tourism',
-  'Aramco',
-  'stc',
-  'Red Sea Global',
-  'Ministry of Culture',
-  'AlUla',
-  'PIF',
 ];
 
 export const principles = [
   {
-    title: 'We shoot our own work',
-    body: 'No brokered crews, no mystery subcontractors. The people who pitch the film are the people on set at 4am.',
+    title: 'We take the difficult briefs',
+    body: 'A large part of the catalogue is reporting that took access, patience, and a tolerance for subjects other studios turn down.',
   },
   {
     title: 'The edit is where it is won',
-    body: 'We budget post like production. A great shoot with a rushed edit is a expensive way to make something forgettable.',
+    body: 'Several of these films run past twenty minutes. That length only holds if post is budgeted like production, not after it.',
   },
   {
-    title: 'Local is not a limitation',
-    body: 'We know which permits take three weeks and which take three days. That knowledge is the difference between a schedule and a wish.',
+    title: 'One team, start to finish',
+    body: 'Research, shoot, VFX, and grade sit under one roof, so nothing is lost in a handover.',
   },
 ];
 
@@ -206,22 +327,22 @@ export interface TimelineEntry {
 export const timeline: TimelineEntry[] = [
   {
     year: '2018',
-    title: 'Two people, one camera',
-    body: 'Founded in a borrowed room in Al Olaya, taking corporate work to fund the films we actually wanted to make.',
+    title: 'Founded as Onoria',
+    body: 'Started as an entertainment and media PR house, taking commercial work alongside the first documentary commissions.',
   },
   {
     year: '2020',
-    title: 'The first long-form',
-    body: 'A 40-minute documentary that took nine months and taught us how to budget post properly.',
+    title: 'Into long-form',
+    body: 'The first films past the twenty-minute mark, and the post pipeline built to support them.',
   },
   {
     year: '2022',
-    title: 'Studio and finishing suite',
-    body: 'Moved into a 900sqm space with a stage, a grade suite, and somewhere to put the grip truck.',
+    title: 'Broadcast work',
+    body: 'Promo and campaign work delivered for regional broadcasters, including Al Jazeera.',
   },
   {
     year: '2025',
-    title: 'Thirty-four people',
-    body: 'Directors, producers, editors, colourists, and a sound team. Still shooting our own work.',
+    title: 'Rebranded to Roaya',
+    body: 'A new name, a new base, and a catalogue of more than eighty films behind it.',
   },
 ];

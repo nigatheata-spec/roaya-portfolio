@@ -55,7 +55,7 @@ export function Footer() {
               <ul className="space-y-2.5 text-sm text-ink-70">
                 <li>{studio.city}</li>
                 <li>{studio.phone}</li>
-                <li>Since {studio.founded}</li>
+                <li>Formerly {studio.formerly}</li>
               </ul>
             </div>
             <div>

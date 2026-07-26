@@ -5,7 +5,7 @@ import { Media } from '../components/Media';
 import { projects } from '../lib/content';
 import { gsap, useGsapContext, prefersReducedMotion } from '../lib/gsap';
 
-const FEATURED = projects.slice(0, 4);
+const FEATURED = projects.filter((p) => p.featured).slice(0, 4);
 
 /**
  * Motion concept 23 — liquid lens zoom.
@@ -84,6 +84,7 @@ export function WorkLens() {
           <div>
             <p className="label mb-5">Selected work</p>
             <h2 className="text-major max-w-xl">Films we would show you first</h2>
+
           </div>
           <Link
             to="/work"
@@ -111,10 +112,10 @@ export function WorkLens() {
               <div className="relative overflow-hidden">
                 <Media
                   src={p.poster}
-                  alt={`${p.title} — ${p.client}`}
+                  alt={p.client ? `${p.title} — ${p.client}` : p.title}
                   aspect={i % 3 === 0 ? '21 / 9' : '4 / 3'}
                   caption={`${p.title} — still`}
-                  className="scale-[1.005] brightness-[0.78] saturate-[0.55] transition-[filter,transform] duration-700 group-hover:scale-[1.03]"
+                  className="scale-[1.005] brightness-[0.94] saturate-[0.82] transition-[filter,transform] duration-700 group-hover:scale-[1.03] group-hover:brightness-100"
                 />
 
                 {/* The refracted alternate treatment, masked to the lens position. */}
@@ -138,17 +139,17 @@ export function WorkLens() {
                   <div className="absolute inset-0 bg-brulee/12 mix-blend-overlay" />
                 </div>
 
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-void via-void/10 to-transparent" />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-void/70 via-transparent to-transparent" />
               </div>
 
               <div className="flex items-start justify-between gap-6 pt-5">
                 <div>
                   <h3 className="text-[1.35rem] font-bold tracking-[-0.03em]">{p.title}</h3>
-                  <p className="mt-1.5 text-sm text-ink-45">{p.client}</p>
+                  {p.client && <p className="mt-1.5 text-sm text-ink-45">{p.client}</p>}
                 </div>
                 <div className="shrink-0 text-right">
                   <p className="label">{p.discipline}</p>
-                  <p className="mt-1.5 text-sm text-ink-25">{p.year}</p>
+                  <p className="mt-1.5 text-sm text-ink-25">{p.runtime}</p>
                 </div>
               </div>
             </article>

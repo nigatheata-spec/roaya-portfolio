@@ -3,7 +3,7 @@ import { ArrowDown } from 'lucide-react';
 import { Media } from '../components/Media';
 import { gsap, useGsapContext, prefersReducedMotion } from '../lib/gsap';
 
-const LINES = ['WE FILM', 'WHAT COMES', 'NEXT'];
+const LINES = ['WE STAY', 'WITH THE', 'STORY'];
 
 /**
  * Motion concept 18 — Ink Flow Reveal.
@@ -99,7 +99,7 @@ export function HeroInkFlow() {
       </div>
 
       <div className="shell relative">
-        <h1 className="sr-only">We film what comes next</h1>
+        <h1 className="sr-only">We stay with the story</h1>
         <svg
           viewBox="0 0 1000 400"
           className="w-full max-h-[48svh]"
@@ -165,8 +165,8 @@ export function HeroInkFlow() {
 
       <div className="shell relative flex flex-col gap-8 pt-10 sm:flex-row sm:items-end sm:justify-between">
         <p data-hero-fade className="max-w-md text-[0.95rem] leading-relaxed text-ink-70">
-          Roaya is a film and broadcast studio in Riyadh. We write, shoot, and finish
-          work for the institutions building the country&apos;s next chapter.
+          Roaya is a film studio working across documentary, drama, and advertising.
+          Long-form reporting, commercial work, and everything finished in house.
         </p>
         <a
           data-hero-fade

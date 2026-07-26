@@ -55,23 +55,33 @@ unmount so ScrollTriggers never leak across routes.
 
 All motion is gated behind `prefers-reduced-motion`.
 
+## Content provenance
+
+The catalogue in `src/lib/content.ts` is carried over from the previous site,
+onoria.solutions. Project titles, runtimes, disciplines, and client credits are real.
+Poster frames in `public/media/work/` were pulled from that site.
+
+Two things still need sign-off before this goes public:
+
+- **Contact details** — `studio.email` and `studio.phone` are the old Onoria values
+  (Istanbul). The studio is now Riyadh-based, so these likely changed.
+- **Project summaries** — one-line descriptions are written from the titles and
+  runtimes. They are descriptive, not sourced. Replace with real synopses.
+
+Headline figures in the "by the numbers" section are computed from the `projects`
+array rather than asserted, so they cannot drift from what the site actually shows.
+
 ## Media assets
 
-The site renders composed placeholders until real assets are dropped in. Add files
-at these paths under `public/` and they appear automatically — no code changes:
+Still outstanding:
 
 ```
 public/media/hero/showreel-poster.jpg
 public/media/hero/showreel.mp4
-public/media/work/diriyah-nights.jpg   (+ .mp4)
-public/media/work/the-long-red.jpg
-public/media/work/qiddiya-launch.jpg
-public/media/work/house-of-oud.jpg
-public/media/work/red-sea-crossing.jpg
-public/media/work/ninety-three.jpg
 ```
 
-Paths are declared in `src/lib/content.ts`.
+Showreel source: <https://vimeo.com/usamaesam>. `Media` renders a composed
+placeholder until these exist, so nothing breaks in the meantime.
 
 ## Localisation
 

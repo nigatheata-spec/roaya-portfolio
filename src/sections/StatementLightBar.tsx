@@ -1,7 +1,7 @@
 import { gsap, SplitText, useGsapContext, prefersReducedMotion } from '../lib/gsap';
 
 const STATEMENT =
-  'A brief is rarely just a film. It is usually a place, or an institution, describing itself to people who have not been paying attention. We treat that as the job.';
+  'Most of what we make takes longer than anyone expected. Access has to be earned, archive has to be found, and the edit is what decides whether any of it was worth doing.';
 
 /**
  * Motion concept 43 — sweeping light bar reveal.
