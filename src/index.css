@@ -1,0 +1,138 @@
+@import 'tailwindcss';
+
+@theme {
+  /* Brand palette — exact values from the Roaya spec */
+  --color-inkwell: #2c3639;
+  --color-eclipse: #3f4e4f;
+  --color-brulee: #a27b5b;
+  --color-lait: #dcd7c9;
+
+  /* Derived depth steps, same hue family */
+  --color-void: oklch(0.17 0.012 205);
+  --color-surface: oklch(0.24 0.013 205);
+  --color-raised: oklch(0.31 0.013 202);
+  --color-line: oklch(0.38 0.012 200);
+  --color-line-soft: oklch(0.31 0.011 202);
+
+  /* Type roles */
+  --color-ink-100: oklch(0.93 0.016 95);
+  --color-ink-70: oklch(0.76 0.016 95);
+  --color-ink-45: oklch(0.6 0.014 95);
+  --color-ink-25: oklch(0.47 0.012 100);
+
+  --color-brulee-bright: oklch(0.68 0.072 62);
+  --color-brulee-dim: oklch(0.42 0.045 58);
+
+  --font-display: 'Bricolage Grotesque', 'Helvetica Neue', sans-serif;
+  --font-body: 'Sora', system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    background: var(--color-void);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    margin: 0;
+    background: var(--color-void);
+    color: var(--color-ink-70);
+    font-family: var(--font-body);
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    color: var(--color-ink-100);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  ::selection {
+    background: var(--color-brulee);
+    color: var(--color-void);
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-void);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-line-soft);
+    border-radius: 99px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-brulee-dim);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brulee);
+    outline-offset: 3px;
+  }
+}
+
+@layer utilities {
+  /* Fluid display scale — used by hero and section heads */
+  .text-mega {
+    font-size: clamp(3.25rem, 11vw, 10.5rem);
+    line-height: 0.86;
+    letter-spacing: -0.045em;
+  }
+  .text-major {
+    font-size: clamp(2.25rem, 6vw, 5rem);
+    line-height: 0.94;
+    letter-spacing: -0.035em;
+  }
+  .text-minor {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+  }
+
+  .label {
+    font-family: var(--font-body);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-ink-45);
+  }
+
+  .shell {
+    width: 100%;
+    max-width: 84rem;
+    margin-inline: auto;
+    padding-inline: clamp(1.25rem, 5vw, 4.5rem);
+  }
+
+  .grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
