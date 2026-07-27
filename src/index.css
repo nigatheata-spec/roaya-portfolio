@@ -1,27 +1,35 @@
 @import 'tailwindcss';
 
 @theme {
-  /* Brand palette — exact values from the Roaya spec */
+  /* Brand palette. Inkwell is the darkest value used anywhere — no pure black. */
   --color-inkwell: #2c3639;
-  --color-eclipse: #3f4e4f;
   --color-brulee: #a27b5b;
   --color-lait: #dcd7c9;
 
-  /* Derived depth steps, same hue family */
-  --color-void: oklch(0.17 0.012 205);
-  --color-surface: oklch(0.24 0.013 205);
-  --color-raised: oklch(0.31 0.013 202);
-  --color-line: oklch(0.38 0.012 200);
-  --color-line-soft: oklch(0.31 0.011 202);
+  /* Dark surfaces, stepping up from Inkwell rather than down toward black */
+  --color-void: #2c3639;
+  --color-surface: oklch(0.335 0.013 203);
+  --color-raised: oklch(0.385 0.013 202);
+  --color-line-soft: oklch(0.4 0.012 201);
+  --color-line: oklch(0.47 0.012 200);
 
-  /* Type roles */
-  --color-ink-100: oklch(0.93 0.016 95);
-  --color-ink-70: oklch(0.76 0.016 95);
-  --color-ink-45: oklch(0.6 0.014 95);
-  --color-ink-25: oklch(0.47 0.012 100);
+  /* Light surfaces, stepping down from Au Lait */
+  --color-cream: #dcd7c9;
+  --color-cream-soft: oklch(0.93 0.013 95);
+  --color-cream-deep: oklch(0.82 0.019 93);
 
-  --color-brulee-bright: oklch(0.68 0.072 62);
-  --color-brulee-dim: oklch(0.42 0.045 58);
+  /* Type on dark */
+  --color-ink-100: oklch(0.9 0.017 95);
+  --color-ink-70: oklch(0.78 0.016 93);
+  --color-ink-45: oklch(0.66 0.015 93);
+  --color-ink-25: oklch(0.56 0.013 95);
+
+  /* Type on cream */
+  --color-on-cream: #2c3639;
+  --color-on-cream-soft: oklch(0.45 0.014 200);
+
+  --color-brulee-bright: oklch(0.72 0.076 62);
+  --color-brulee-dim: oklch(0.5 0.055 58);
 
   --font-display: 'Bricolage Grotesque', 'Helvetica Neue', sans-serif;
   --font-body: 'Sora', system-ui, sans-serif;

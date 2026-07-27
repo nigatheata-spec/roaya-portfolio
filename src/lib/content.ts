@@ -228,30 +228,6 @@ export const clients = [
   'Ahmed Amin',
 ];
 
-const runtimeToMinutes = (r: string) => {
-  const [m, s] = r.split(':').map(Number);
-  return m + s / 60;
-};
-
-/**
- * Derived from `projects` rather than asserted, so the figures cannot drift away
- * from the work actually listed on the site.
- */
-export const metrics = [
-  { value: projects.length, suffix: '', label: 'Films in this selection' },
-  {
-    value: projects.filter((p) => p.discipline === 'Documentary').length,
-    suffix: '',
-    label: 'Documentaries',
-  },
-  {
-    value: Math.round(projects.reduce((sum, p) => sum + runtimeToMinutes(p.runtime), 0)),
-    suffix: ' min',
-    label: 'Total runtime',
-  },
-  { value: disciplines.length - 1, suffix: '', label: 'Disciplines covered' },
-];
-
 export interface Service {
   index: string;
   title: string;

@@ -85,7 +85,7 @@ export function Footer() {
         {studio.name.split('').map((ch, i) => (
           <span
             key={i}
-            className="inline-block font-display text-[clamp(4rem,19vw,17rem)] font-extrabold leading-[0.78] tracking-[-0.06em] text-eclipse/70"
+            className="inline-block font-display text-[clamp(4rem,19vw,17rem)] font-extrabold leading-[0.78] tracking-[-0.06em] text-raised"
           >
             {ch}
           </span>

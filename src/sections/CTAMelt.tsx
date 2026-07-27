@@ -81,7 +81,7 @@ export function CTAMelt() {
             <div className="mt-12 flex flex-col items-center justify-center gap-5 sm:flex-row">
               <Link
                 to="/contact"
-                className="group inline-flex items-center gap-2.5 rounded-full bg-lait px-7 py-3.5 text-sm font-medium text-void transition-colors hover:bg-brulee"
+                className="group inline-flex items-center gap-2.5 rounded-full bg-cream px-7 py-3.5 text-sm font-medium text-on-cream transition-colors hover:bg-brulee"
               >
                 Start a project
                 <ArrowRight

@@ -3,10 +3,16 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { navItems, studio } from '../lib/content';
 
+/** Routes whose first section sits on a cream surface, so the nav must invert. */
+const LIGHT_TOP_ROUTES = ['/services'];
+
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const location = useLocation();
+
+  // Only while pinned over the light hero; once scrolled the bar gets its own dark fill.
+  const onLight = LIGHT_TOP_ROUTES.includes(location.pathname) && !scrolled && !open;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -35,7 +41,9 @@ export function Nav() {
       <div className="shell flex items-center justify-between py-5">
         <Link
           to="/"
-          className="font-display text-[1.35rem] font-extrabold tracking-[-0.05em] text-ink-100"
+          className={`font-display text-[1.35rem] font-extrabold tracking-[-0.05em] ${
+            onLight ? 'text-on-cream' : 'text-ink-100'
+          }`}
           aria-label={`${studio.name} — home`}
         >
           {studio.name}
@@ -48,9 +56,11 @@ export function Nav() {
               key={item.to}
               to={item.to}
               className={({ isActive }) =>
-                `label transition-colors duration-300 hover:text-ink-100 ${
-                  isActive ? 'text-brulee' : ''
-                }`
+                `label transition-colors duration-300 ${
+                  onLight
+                    ? 'text-on-cream-soft hover:text-on-cream'
+                    : 'hover:text-ink-100'
+                } ${isActive ? '!text-brulee' : ''}`
               }
             >
               {item.label}
@@ -61,10 +71,12 @@ export function Nav() {
         <div className="hidden md:block">
           <Link
             to="/contact"
-            className="group relative inline-flex items-center overflow-hidden rounded-full border border-line px-5 py-2 text-[0.8rem] font-medium text-ink-100 transition-colors duration-300 hover:border-brulee"
+            className={`group relative inline-flex items-center overflow-hidden rounded-full border px-5 py-2 text-[0.8rem] font-medium transition-colors duration-300 hover:border-brulee ${
+              onLight ? 'border-on-cream/30 text-on-cream' : 'border-line text-ink-100'
+            }`}
           >
             <span className="absolute inset-0 -translate-y-full bg-brulee transition-transform duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0" />
-            <span className="relative transition-colors duration-300 group-hover:text-void">
+            <span className="relative transition-colors duration-300 group-hover:text-on-cream">
               Start a project
             </span>
           </Link>
@@ -73,7 +85,7 @@ export function Nav() {
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="text-ink-100 md:hidden"
+          className={`md:hidden ${onLight ? 'text-on-cream' : 'text-ink-100'}`}
           aria-label={open ? 'Close menu' : 'Open menu'}
           aria-expanded={open}
         >

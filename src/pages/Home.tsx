@@ -3,7 +3,6 @@ import { ClientsMarquee } from '../sections/ClientsMarquee';
 import { StatementLightBar } from '../sections/StatementLightBar';
 import { WorkLens } from '../sections/WorkLens';
 import { ServicesReconfig } from '../sections/ServicesReconfig';
-import { MetricsWave } from '../sections/MetricsWave';
 import { CTAMelt } from '../sections/CTAMelt';
 
 export function Home() {
@@ -14,7 +13,6 @@ export function Home() {
       <StatementLightBar />
       <WorkLens />
       <ServicesReconfig />
-      <MetricsWave />
       <CTAMelt />
     </>
   );
