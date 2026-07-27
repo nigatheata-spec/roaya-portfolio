@@ -74,7 +74,7 @@ export function Work() {
         <div ref={scope} className="grid gap-x-5 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((p) => (
             <article key={p.slug} data-project className="group">
-              <div className="relative overflow-hidden">
+              <div className="relative overflow-hidden rounded-2xl">
                 <Media
                   src={p.poster}
                   alt={p.client ? `${p.title} — ${p.client}` : p.title}
@@ -82,7 +82,7 @@ export function Work() {
                   caption={p.title}
                   className="brightness-[0.96] transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                 />
-                <span className="absolute right-3 top-3 rounded-full bg-void/80 px-2.5 py-1 text-[0.7rem] font-medium text-ink-100 backdrop-blur-sm">
+                <span className="absolute right-3 top-3 rounded-full bg-black/75 px-2.5 py-1 text-[0.7rem] font-medium text-ink-100 backdrop-blur-sm">
                   {p.runtime}
                 </span>
               </div>

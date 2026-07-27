@@ -78,7 +78,7 @@ export function Services() {
               <article
                 key={s.index}
                 data-panel
-                className="origin-top border border-on-cream/15 bg-void p-8 md:p-10"
+                className="origin-top rounded-2xl border border-on-cream/12 bg-cream-deep p-8 shadow-[0_8px_28px_-12px_rgba(0,0,0,0.35)] md:p-10"
                 style={{ transformStyle: 'preserve-3d' }}
               >
                 <div className="flex flex-col gap-6 md:flex-row md:items-start md:gap-12">
@@ -86,10 +86,10 @@ export function Services() {
                     {s.index}
                   </span>
                   <div className="md:flex-1">
-                    <h2 className="text-[1.6rem] font-bold tracking-[-0.03em] text-ink-100">
+                    <h2 className="text-[1.6rem] font-bold tracking-[-0.03em] text-on-cream">
                       {s.title}
                     </h2>
-                    <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ink-70">
+                    <p className="mt-3 max-w-2xl text-sm leading-relaxed text-on-cream-soft">
                       {s.description}
                     </p>
                   </div>
@@ -97,7 +97,7 @@ export function Services() {
                     {s.deliverables.map((d) => (
                       <li
                         key={d}
-                        className="rounded-full border border-line-soft px-3 py-1 text-xs text-ink-45"
+                        className="rounded-full border border-on-cream/20 px-3 py-1 text-xs text-on-cream-soft"
                       >
                         {d}
                       </li>
@@ -131,7 +131,7 @@ export function Services() {
 
       <section className="pb-28">
         <div className="shell">
-          <div className="flex flex-col items-start gap-8 border border-line-soft/70 bg-surface/60 px-8 py-14 md:flex-row md:items-center md:justify-between md:px-14">
+          <div className="flex flex-col items-start gap-8 rounded-2xl border border-line-soft/70 bg-surface/60 px-8 py-14 md:flex-row md:items-center md:justify-between md:px-14">
             <h2 className="text-minor max-w-lg font-bold">
               Not sure which of these you need? That is usually the first conversation.
             </h2>

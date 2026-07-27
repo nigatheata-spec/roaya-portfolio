@@ -84,7 +84,7 @@ export function HeroInkFlow() {
           alt="Roaya showreel"
           aspect="auto"
           caption="Showreel — 16:9"
-          className="h-full w-full opacity-30"
+          className="h-full w-full rounded-none opacity-30"
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-b from-void via-void/70 to-void" />

@@ -44,7 +44,7 @@ export function CTAMelt() {
   return (
     <section ref={scope} className="border-t border-line-soft/50 py-24 md:py-32">
       <div className="shell">
-        <div className="relative overflow-hidden border border-line-soft/70 bg-surface/50 px-6 py-24 md:px-16 md:py-32">
+        <div className="relative overflow-hidden rounded-3xl border border-line-soft/70 bg-surface/50 px-6 py-24 md:px-16 md:py-32">
           <svg className="absolute h-0 w-0" aria-hidden="true">
             <defs>
               <filter id="melt-goo">

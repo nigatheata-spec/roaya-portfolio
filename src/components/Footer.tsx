@@ -15,7 +15,7 @@ export function Footer() {
   });
 
   return (
-    <footer ref={scope} className="relative border-t border-line-soft/70 bg-void pt-20">
+    <footer ref={scope} className="relative border-t border-line-soft/70 bg-black pt-20">
       <div className="shell">
         <div className="flex flex-col gap-12 pb-16 md:flex-row md:justify-between">
           <div className="max-w-sm">

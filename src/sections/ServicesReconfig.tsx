@@ -51,7 +51,7 @@ export function ServicesReconfig() {
       stagger: { each: 0.045, from: 'random' },
     }).to(
       '[data-widget-frame]',
-      { borderColor: 'var(--color-line)', duration: 0.4, ease: 'none' },
+      { borderColor: 'rgba(0,0,0,0.12)', duration: 0.4, ease: 'none' },
       '>-0.2',
     );
   });
@@ -85,21 +85,21 @@ export function ServicesReconfig() {
             >
               <div
                 data-widget-frame
-                className="h-full border border-line-soft/70 bg-surface/70 p-7 transition-colors duration-500 hover:border-brulee/60"
+                className="h-full rounded-2xl border border-on-cream/12 bg-cream-deep p-7 shadow-[0_8px_28px_-12px_rgba(0,0,0,0.35)] transition-colors duration-500 hover:border-brulee/60"
               >
                 <div className="mb-8 flex items-baseline justify-between">
                   <span className="font-display text-3xl font-extrabold tracking-tight text-brulee">
                     {s.index}
                   </span>
-                  <span className="label opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                  <span className="label text-on-cream-soft opacity-0 transition-opacity duration-500 group-hover:opacity-100">
                     {String(i + 1).padStart(2, '0')} / {services.length}
                   </span>
                 </div>
-                <h3 className="text-[1.3rem] font-bold tracking-[-0.03em]">{s.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-ink-45">{s.description}</p>
+                <h3 className="text-[1.3rem] font-bold tracking-[-0.03em] text-on-cream">{s.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-on-cream-soft">{s.description}</p>
                 <ul className="mt-6 flex flex-wrap gap-x-3 gap-y-1.5">
                   {s.deliverables.map((d) => (
-                    <li key={d} className="text-xs text-ink-25">
+                    <li key={d} className="text-xs text-on-cream-soft/70">
                       {d}
                     </li>
                   ))}

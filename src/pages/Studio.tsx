@@ -119,7 +119,7 @@ export function Studio() {
 
       <section className="pb-28">
         <div className="shell">
-          <div className="flex flex-col items-start gap-8 border border-line-soft/70 bg-surface/60 px-8 py-14 md:flex-row md:items-center md:justify-between md:px-14">
+          <div className="flex flex-col items-start gap-8 rounded-2xl border border-line-soft/70 bg-surface/60 px-8 py-14 md:flex-row md:items-center md:justify-between md:px-14">
             <div>
               <h2 className="text-minor max-w-lg font-bold">
                 The reel says more than this page does.
