@@ -5,7 +5,7 @@ import { navItems, studio, uiCopy } from '../lib/content';
 import { useLanguage, usePick } from '../lib/language';
 
 /** Routes whose first section sits on a cream surface, so the nav must invert. */
-const LIGHT_TOP_ROUTES = ['/services'];
+const LIGHT_TOP_ROUTES = ['/services', '/contact'];
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -39,9 +39,9 @@ export function Nav() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 bg-black transition-[background-color,border-color,backdrop-filter] duration-500 ${
+      className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-500 ${
         scrolled || open
-          ? 'border-b border-line-soft/70 backdrop-blur-xl'
+          ? 'border-b border-line-soft/70 bg-void/80 backdrop-blur-xl'
           : 'border-b border-transparent'
       }`}
     >
