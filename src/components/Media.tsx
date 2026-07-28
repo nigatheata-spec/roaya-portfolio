@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 interface MediaProps {
   src: string;
@@ -26,25 +26,49 @@ export function Media({
 }: MediaProps) {
   const [failed, setFailed] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const [inView, setInView] = useState(priority);
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (priority) return;
+    const el = rootRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '400px' },
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [priority]);
 
   return (
     <div
+      ref={rootRef}
       className={`relative overflow-hidden rounded-2xl bg-surface grain ${className}`}
       style={{ aspectRatio: aspect }}
     >
       {!failed && video ? (
-        <video
-          className="absolute inset-0 h-full w-full object-cover"
-          poster={src}
-          muted
-          loop
-          playsInline
-          autoPlay
-          onError={() => setFailed(true)}
-          onLoadedData={() => setLoaded(true)}
-        >
-          <source src={video} />
-        </video>
+        inView && (
+          <video
+            className="absolute inset-0 h-full w-full object-cover"
+            poster={src}
+            muted
+            loop
+            playsInline
+            autoPlay
+            onError={() => setFailed(true)}
+            onLoadedData={() => setLoaded(true)}
+          >
+            <source src={video} />
+          </video>
+        )
       ) : !failed ? (
         <img
           src={src}
