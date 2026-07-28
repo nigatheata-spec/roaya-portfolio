@@ -53,12 +53,12 @@ export function ReelWall() {
   });
 
   return (
-    <section ref={scope} className="relative border-t border-line-soft/50 py-24 md:py-32">
+    <section ref={scope} className="relative border-t border-on-cream/12 bg-cream py-24 md:py-32">
       <div className="shell">
         <div data-reel-head className="mb-14 max-w-2xl">
-          <p className="label mb-5">In motion</p>
-          <h2 className="text-major">Cuts from the floor</h2>
-          <p className="mt-6 text-[0.95rem] leading-relaxed text-ink-70">
+          <p className="label mb-5 text-on-cream-soft">In motion</p>
+          <h2 className="text-major text-on-cream">Cuts from the floor</h2>
+          <p className="mt-6 text-[0.95rem] leading-relaxed text-on-cream-soft">
             Recent pieces, finished in house. Every project leaves with the wide master
             and the vertical cutdowns specced from the start, not scrambled for at the end.
           </p>

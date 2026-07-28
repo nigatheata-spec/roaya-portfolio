@@ -12,8 +12,8 @@ export function Home() {
     <>
       <HeroInkFlow />
       <ClientsMarquee />
-      <StatementLightBar />
       <ReelWall />
+      <StatementLightBar />
       <CinematicAI />
       <DragGallery />
       <ServicesReconfig />
