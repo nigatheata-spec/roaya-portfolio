@@ -95,7 +95,7 @@ export function Contact() {
 
   return (
     <div ref={scope}>
-      <section className="relative overflow-hidden pb-20 pt-40">
+      <section className="relative overflow-hidden bg-cream pb-20 pt-40">
         <svg
           viewBox="0 0 760 360"
           className="pointer-events-none absolute inset-x-0 top-24 h-[360px] w-full opacity-30"
@@ -117,16 +117,16 @@ export function Contact() {
         </svg>
 
         <div className="shell relative">
-          <p data-contact-fade className="label mb-8 flex items-center gap-3">
+          <p data-contact-fade className="label mb-8 flex items-center gap-3 text-on-cream-soft">
             <span className="inline-block h-px w-8 bg-brulee" />
             {pick(COPY.eyebrow)}
           </p>
-          <h1 data-contact-fade className="text-mega font-extrabold text-cream">
+          <h1 data-contact-fade className="text-mega font-extrabold text-on-cream">
             {pick(COPY.title)}
           </h1>
           <p
             data-contact-fade
-            className="mt-10 max-w-xl text-[0.95rem] leading-relaxed text-ink-70"
+            className="mt-10 max-w-xl text-[0.95rem] leading-relaxed text-on-cream-soft"
           >
             {pick(COPY.intro)}
           </p>
