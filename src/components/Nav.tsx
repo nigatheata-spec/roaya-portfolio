@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Globe } from 'lucide-react';
 import { navItems, studio, uiCopy } from '../lib/content';
 import { useLanguage, usePick } from '../lib/language';
 
@@ -88,16 +88,14 @@ export function Nav() {
           <button
             type="button"
             onClick={toggle}
-            className={`label rounded-full border px-3 py-1.5 transition-colors duration-300 ${
-              lang === 'en' ? 'font-arabic-ui' : ''
-            } ${
+            className={`rounded-full border p-1.5 transition-colors duration-300 ${
               onLight
                 ? 'border-on-cream/30 text-on-cream hover:border-brulee'
                 : 'border-line text-ink-100 hover:border-brulee'
             }`}
             aria-label="Switch language"
           >
-            {pick(uiCopy.switchLang)}
+            <Globe size={18} />
           </button>
           <Link
             to="/contact"
@@ -148,11 +146,10 @@ export function Nav() {
             <button
               type="button"
               onClick={toggle}
-              className={`label rounded-full border border-line px-4 py-2.5 text-ink-100 ${
-                lang === 'en' ? 'font-arabic-ui' : ''
-              }`}
+              className="rounded-full border border-line p-2 text-ink-100"
+              aria-label="Switch language"
             >
-              {pick(uiCopy.switchLang)}
+              <Globe size={18} />
             </button>
           </div>
         </div>
