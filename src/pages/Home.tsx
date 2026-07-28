@@ -13,8 +13,8 @@ export function Home() {
       <HeroInkFlow />
       <ClientsMarquee />
       <ReelWall />
-      <StatementLightBar />
       <CinematicAI />
+      <StatementLightBar />
       <DragGallery />
       <ServicesReconfig />
       <CTAMelt />
