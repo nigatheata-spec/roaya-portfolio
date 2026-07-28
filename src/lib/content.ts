@@ -1,7 +1,7 @@
 export const studio = {
   name: 'Roaya',
   arabicName: 'رؤية',
-  tagline: 'AI production machine',
+  tagline: { en: 'AI production machine', ar: 'منظومة إنتاج بالذكاء الاصطناعي' },
   city: 'Riyadh, Saudi Arabia',
   // TODO: confirm contact details.
   email: 'info@roaya.com',

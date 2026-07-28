@@ -2,9 +2,12 @@ import { useRef } from 'react';
 import { ArrowDown } from 'lucide-react';
 import { Media } from '../components/Media';
 import { gsap, useGsapContext, prefersReducedMotion } from '../lib/gsap';
-import { usePick } from '../lib/language';
+import { usePick, useLanguage } from '../lib/language';
 
-const LINES = ['WE STAY', 'WITH THE', 'STORY'];
+const LINES = {
+  en: ['WE STAY', 'WITH THE', 'STORY'],
+  ar: ['نبقى', 'مع القصة'],
+};
 
 const COPY = {
   label: { en: 'Media house — Riyadh', ar: 'بيت إعلامي — الرياض' },
@@ -23,6 +26,7 @@ const COPY = {
  */
 export function HeroInkFlow() {
   const pick = usePick();
+  const { lang } = useLanguage();
   const stops = useRef<(SVGStopElement | null)[]>([]);
   const disp = useRef<SVGFEDisplacementMapElement>(null);
   const turb = useRef<SVGFETurbulenceElement>(null);
@@ -112,7 +116,12 @@ export function HeroInkFlow() {
 
       <div className="shell relative">
         <h1 className="sr-only">{pick(COPY.h1)}</h1>
+        {/*
+          Pinned LTR: inside an RTL page the SVG would inherit direction and
+          render the x="0" text off the left edge of the canvas.
+        */}
         <svg
+          style={{ direction: 'ltr' }}
           viewBox="0 0 1000 400"
           className="w-full max-h-[48svh]"
           aria-hidden="true"
@@ -158,15 +167,20 @@ export function HeroInkFlow() {
           </defs>
 
           <g mask="url(#ink-mask)" fill="var(--color-ink-100)">
-            {LINES.map((line, i) => (
+            {LINES[lang].map((line, i) => (
               <text
                 key={line}
                 x="0"
-                y={114 + i * 134}
-                fontFamily="Milea Serif, Bricolage Grotesque, serif"
+                y={lang === 'ar' ? 150 + i * 165 : 114 + i * 134}
+                fontFamily={
+                  lang === 'ar'
+                    ? 'Arabic Display, Tahoma, sans-serif'
+                    : 'Milea Serif, Bricolage Grotesque, serif'
+                }
                 fontWeight="800"
-                fontSize="138"
-                letterSpacing="-6"
+                fontSize={lang === 'ar' ? 128 : 138}
+                /* Negative tracking breaks Arabic letter joining. */
+                letterSpacing={lang === 'ar' ? '0' : '-6'}
               >
                 {line}
               </text>
