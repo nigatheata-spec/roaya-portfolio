@@ -43,85 +43,6 @@ export interface Project {
  */
 export const projects: Project[] = [
   {
-    slug: 'jamal-khashoggi',
-    title: 'Jamal Khashoggi',
-    runtime: '22:31',
-    discipline: 'Documentary',
-    summary:
-      'Long-form documentary reconstructing the events surrounding the journalist’s disappearance.',
-    poster: '/media/work/jamal-khashoggi.jpg',
-    featured: true,
-  },
-  {
-    slug: 'egypt-between-two-armies',
-    title: 'Egypt Between Two Armies',
-    runtime: '14:28',
-    discipline: 'Documentary',
-    summary:
-      'A feature-length examination of Egypt’s military institutions and the decade that reshaped them.',
-    poster: '/media/work/egypt-between-two-armies.jpg',
-    featured: true,
-  },
-  {
-    slug: 'story-of-sunnah-albukhary',
-    title: 'Story of Sunnah Albukhary',
-    runtime: '23:55',
-    discipline: 'Documentary',
-    summary:
-      'The longest film in the catalogue, tracing the compilation and transmission of a foundational text.',
-    poster: '/media/work/story-of-sunnah-albukhary.jpg',
-    featured: true,
-  },
-  {
-    slug: 'badr-2000',
-    title: 'BADR 2000 Project',
-    runtime: '10:13',
-    discipline: 'Documentary',
-    summary: 'Project documentary produced across multiple locations and shooting blocks.',
-    poster: '/media/work/badr-2000.jpg',
-    featured: true,
-  },
-  {
-    slug: 'rabaa-massacre',
-    title: 'Rabaa Massacre',
-    runtime: '01:20',
-    discipline: 'Documentary',
-    summary: 'Short-form archival piece assembled from footage of the events at Rabaa.',
-    poster: '/media/work/rabaa-massacre.jpg',
-  },
-  {
-    slug: 'in-love-of-quds',
-    title: 'In Love of Quds',
-    runtime: '03:29',
-    discipline: 'Documentary',
-    summary: 'A short film on Jerusalem, its architecture, and the people who hold it.',
-    poster: '/media/work/in-love-of-quds.jpg',
-  },
-  {
-    slug: 'al-aqsa-al-imam',
-    title: 'Al Aqsa & Al Imam',
-    runtime: '00:48',
-    discipline: 'Documentary',
-    summary: 'A short portrait piece shot on location.',
-    poster: '/media/work/al-aqsa-al-imam.jpg',
-  },
-  {
-    slug: 'berberas-hunter',
-    title: "Berbera's Hunter",
-    runtime: '01:36',
-    discipline: 'Documentary',
-    summary: 'Observational short following a hunter on the Somali coast.',
-    poster: '/media/work/berberas-hunter.jpg',
-  },
-  {
-    slug: 'omar-kafi',
-    title: 'Omar Kafi',
-    runtime: '03:52',
-    discipline: 'Drama',
-    summary: 'Scripted short-form drama.',
-    poster: '/media/work/omar-kafi.jpg',
-  },
-  {
     slug: 'al-warsha',
     title: 'Al-Warsha',
     client: 'Ahmed Amin',
@@ -147,6 +68,7 @@ export const projects: Project[] = [
     discipline: 'Promo',
     summary: 'Hyperlapse-driven city promo, the longest promo in the catalogue.',
     poster: '/media/work/shjseen-hyperlapses.jpg',
+    featured: true,
   },
   {
     slug: 'cbot-robolabs',
@@ -156,6 +78,7 @@ export const projects: Project[] = [
     discipline: 'Advertising',
     summary: 'Product commercial for a consumer robotics launch.',
     poster: '/media/work/cbot-robolabs.jpg',
+    featured: true,
   },
   {
     slug: 'altar-solar',
@@ -164,6 +87,7 @@ export const projects: Project[] = [
     discipline: 'Advertising',
     summary: 'Corporate film for a renewable energy operator.',
     poster: '/media/work/altar-solar.jpg',
+    featured: true,
   },
   {
     slug: 'total-yogurt',
