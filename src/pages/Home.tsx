@@ -1,7 +1,6 @@
 import { HeroInkFlow } from '../sections/HeroInkFlow';
 import { ClientsMarquee } from '../sections/ClientsMarquee';
 import { StatementLightBar } from '../sections/StatementLightBar';
-import { WorkLens } from '../sections/WorkLens';
 import { CinematicAI } from '../sections/CinematicAI';
 import { ReelWall } from '../sections/ReelWall';
 import { DragGallery } from '../sections/DragGallery';
@@ -14,7 +13,6 @@ export function Home() {
       <HeroInkFlow />
       <ClientsMarquee />
       <StatementLightBar />
-      <WorkLens />
       <ReelWall />
       <CinematicAI />
       <DragGallery />
