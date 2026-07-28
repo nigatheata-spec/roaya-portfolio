@@ -111,7 +111,7 @@ export function Contact() {
               d={d}
               fill="none"
               stroke="var(--color-teal)"
-              strokeWidth="1"
+              strokeWidth="2.5"
             />
           ))}
         </svg>
