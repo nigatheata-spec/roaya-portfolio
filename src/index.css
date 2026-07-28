@@ -49,6 +49,9 @@
   --color-brulee-bright: oklch(0.72 0.076 62);
   --color-brulee-dim: oklch(0.5 0.055 58);
 
+  /* Teal accent, in the Eclipse family but bright enough to read as a line on dark. */
+  --color-teal: oklch(0.62 0.07 195);
+
   --font-display: 'Milea Serif', 'Bricolage Grotesque', 'Helvetica Neue', serif;
   --font-body: 'Sora', system-ui, sans-serif;
   /* Display face for Arabic headings; body copy uses a readable UI Arabic stack. */

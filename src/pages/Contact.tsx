@@ -110,7 +110,7 @@ export function Contact() {
               }}
               d={d}
               fill="none"
-              stroke="var(--color-brulee)"
+              stroke="var(--color-teal)"
               strokeWidth="1"
             />
           ))}
@@ -121,7 +121,7 @@ export function Contact() {
             <span className="inline-block h-px w-8 bg-brulee" />
             {pick(COPY.eyebrow)}
           </p>
-          <h1 data-contact-fade className="text-mega font-extrabold">
+          <h1 data-contact-fade className="text-mega font-extrabold text-cream">
             {pick(COPY.title)}
           </h1>
           <p

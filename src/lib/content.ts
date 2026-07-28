@@ -138,17 +138,6 @@ export const projects: Project[] = [
     poster: '/media/work/rekaz.jpg',
   },
   {
-    slug: 'ghayeb',
-    title: 'Ghayeb',
-    runtime: '00:33',
-    discipline: 'Promo',
-    summary: {
-      en: 'Campaign promo, including behind-the-scenes coverage.',
-      ar: 'برومو حملة إعلانية مع تغطية من خلف الكواليس.',
-    },
-    poster: '/media/work/ghayeb.jpg',
-  },
-  {
     slug: 'promo-minimalism',
     title: 'Minimalism',
     runtime: '00:41',

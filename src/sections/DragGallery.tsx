@@ -11,7 +11,6 @@ const images = [
   { id: 2, alt: 'Discovering Alrihla — Al Jazeera', src: '/media/work/alrihla-world-cup.jpg' },
   { id: 3, alt: 'Altar Solar Energy', src: '/media/work/altar-solar.jpg' },
   { id: 4, alt: 'CBot — Robolabs', src: '/media/work/cbot-robolabs.jpg' },
-  { id: 5, alt: 'Ghayeb', src: '/media/work/ghayeb.jpg' },
   { id: 6, alt: 'LEGO Bridge — VFX', src: '/media/work/lego-vfx-bridge.jpg' },
   { id: 7, alt: 'Minimalism promo', src: '/media/work/promo-minimalism.jpg' },
   { id: 8, alt: 'Rekaz', src: '/media/work/rekaz.jpg' },

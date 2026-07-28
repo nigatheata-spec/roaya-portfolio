@@ -16,6 +16,10 @@ const WIDE = [
   { id: '1213542850', title: 'Reel excerpt' },
   { id: '1213541580', title: 'Long-form excerpt' },
   { id: '1213539687', title: 'Feature excerpt' },
+  { id: '1213694218', title: 'Reel excerpt' },
+  { id: '1213694220', title: 'Reel excerpt' },
+  { id: '1213694221', title: 'Reel excerpt' },
+  { id: '1213694219', title: 'Reel excerpt' },
 ];
 
 /** Vertical pieces, cut for social and mobile-first delivery. */
