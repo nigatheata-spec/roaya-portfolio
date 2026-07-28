@@ -1,7 +1,12 @@
 import { gsap, SplitText, useGsapContext, prefersReducedMotion } from '../lib/gsap';
+import { usePick, useLanguage } from '../lib/language';
 
-const STATEMENT =
-  'Most of what we make takes longer than anyone expected. Access has to be earned, archive has to be found, and the edit is what decides whether any of it was worth doing.';
+const STATEMENT = {
+  en: 'Most of what we make takes longer than anyone expected. Access has to be earned, archive has to be found, and the edit is what decides whether any of it was worth doing.',
+  ar: 'معظم ما ننتجه يستغرق وقتاً أطول مما يتوقعه أي أحد. الوصول يجب أن يُكتسب، والأرشيف يجب أن يُوجد، والمونتاج هو ما يحدد إن كان كل ذلك يستحق العناء.',
+};
+
+const LABEL = { en: 'Position', ar: 'موقفنا' };
 
 /**
  * Motion concept 43 — sweeping light bar reveal.
@@ -9,6 +14,8 @@ const STATEMENT =
  * and hold, so the sentence is written by the light rather than faded in wholesale.
  */
 export function StatementLightBar() {
+  const pick = usePick();
+  const { lang } = useLanguage();
   const scope = useGsapContext<HTMLElement>(({ scope }) => {
     const target = scope.querySelector<HTMLElement>('[data-statement]');
     if (!target) return;
@@ -47,7 +54,7 @@ export function StatementLightBar() {
     );
 
     return () => split.revert();
-  });
+  }, [lang]);
 
   return (
     <section ref={scope} className="relative overflow-hidden border-t border-line-soft/50 py-28 md:py-40">
@@ -61,12 +68,12 @@ export function StatementLightBar() {
         }}
       />
       <div className="shell relative">
-        <p className="label mb-10">Position</p>
+        <p className="label mb-10">{pick(LABEL)}</p>
         <p
           data-statement
           className="max-w-4xl font-display text-[clamp(1.6rem,3.7vw,3.15rem)] font-medium leading-[1.14] tracking-[-0.03em]"
         >
-          {STATEMENT}
+          {pick(STATEMENT)}
         </p>
       </div>
     </section>

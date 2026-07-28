@@ -2,8 +2,19 @@ import { useRef } from 'react';
 import { ArrowDown } from 'lucide-react';
 import { Media } from '../components/Media';
 import { gsap, useGsapContext, prefersReducedMotion } from '../lib/gsap';
+import { usePick } from '../lib/language';
 
 const LINES = ['WE STAY', 'WITH THE', 'STORY'];
+
+const COPY = {
+  label: { en: 'Media house — Riyadh', ar: 'بيت إعلامي — الرياض' },
+  h1: { en: 'We stay with the story', ar: 'نبقى مع القصة' },
+  intro: {
+    en: 'Roaya is a film studio working across documentary, drama, and advertising. Long-form reporting, commercial work, and everything finished in house.',
+    ar: 'رؤية استوديو أفلام يعمل في الوثائقي والدراما والإعلانات. تقارير طويلة، وأعمال تجارية، وكل شيء يُنجز داخلياً.',
+  },
+  selectedWork: { en: 'Selected work', ar: 'أعمال مختارة' },
+};
 
 /**
  * Motion concept 18 — Ink Flow Reveal.
@@ -11,6 +22,7 @@ const LINES = ['WE STAY', 'WITH THE', 'STORY'];
  * painted into existence by flowing ink rather than wiped in by a hard edge.
  */
 export function HeroInkFlow() {
+  const pick = usePick();
   const stops = useRef<(SVGStopElement | null)[]>([]);
   const disp = useRef<SVGFEDisplacementMapElement>(null);
   const turb = useRef<SVGFETurbulenceElement>(null);
@@ -94,12 +106,12 @@ export function HeroInkFlow() {
       <div className="shell relative">
         <p data-hero-fade className="label mb-8 flex items-center gap-3">
           <span className="inline-block h-px w-8 bg-brulee" />
-          Media house — Riyadh
+          {pick(COPY.label)}
         </p>
       </div>
 
       <div className="shell relative">
-        <h1 className="sr-only">We stay with the story</h1>
+        <h1 className="sr-only">{pick(COPY.h1)}</h1>
         <svg
           viewBox="0 0 1000 400"
           className="w-full max-h-[48svh]"
@@ -151,7 +163,7 @@ export function HeroInkFlow() {
                 key={line}
                 x="0"
                 y={114 + i * 134}
-                fontFamily="Bricolage Grotesque, sans-serif"
+                fontFamily="Milea Serif, Bricolage Grotesque, serif"
                 fontWeight="800"
                 fontSize="138"
                 letterSpacing="-6"
@@ -165,15 +177,14 @@ export function HeroInkFlow() {
 
       <div className="shell relative flex flex-col gap-8 pt-10 sm:flex-row sm:items-end sm:justify-between">
         <p data-hero-fade className="max-w-md text-[0.95rem] leading-relaxed text-ink-70">
-          Roaya is a film studio working across documentary, drama, and advertising.
-          Long-form reporting, commercial work, and everything finished in house.
+          {pick(COPY.intro)}
         </p>
         <a
           data-hero-fade
           href="#work"
           className="group flex shrink-0 items-center gap-3 text-ink-45 transition-colors hover:text-ink-100"
         >
-          <span className="label">Selected work</span>
+          <span className="label">{pick(COPY.selectedWork)}</span>
           <span className="flex h-10 w-10 items-center justify-center rounded-full border border-line transition-colors group-hover:border-brulee">
             <ArrowDown
               size={15}

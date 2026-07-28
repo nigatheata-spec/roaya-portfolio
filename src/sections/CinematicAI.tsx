@@ -1,5 +1,18 @@
 import { VimeoClip } from '../components/VimeoClip';
 import { gsap, useGsapContext, prefersReducedMotion } from '../lib/gsap';
+import { usePick } from '../lib/language';
+
+const COPY = {
+  label: { en: 'Cinematic AI', ar: 'ذكاء اصطناعي سينمائي' },
+  title: {
+    en: 'Generated footage, shot like film',
+    ar: 'لقطات مولّدة، مصوّرة كالسينما',
+  },
+  body: {
+    en: 'Most AI video reads as AI video — flat motion, no camera logic, nothing a cinematographer would sign off on. We direct it the way we direct a shoot: tracking, handheld, reveals, blocking. The output holds up next to footage we captured on location.',
+    ar: 'معظم فيديوهات الذكاء الاصطناعي تبدو كما هي — حركة مسطحة، بلا منطق كاميرا، ولا شيء يوافق عليه مدير تصوير. نحن نخرجها كما نخرج التصوير الحقيقي: تتبع، كاميرا محمولة، كشف تدريجي، وتوزيع المشهد. والنتيجة تصمد إلى جانب ما صوّرناه في المواقع.',
+  },
+};
 
 const CLIPS = [
   { id: '1213406495', title: 'Tracking shot — AI-generated' },
@@ -15,6 +28,7 @@ const CLIPS = [
  * camera language (tracking, handheld, reveals) applied to generated footage.
  */
 export function CinematicAI() {
+  const pick = usePick();
   const scope = useGsapContext<HTMLElement>(() => {
     if (prefersReducedMotion()) return;
 
@@ -41,17 +55,14 @@ export function CinematicAI() {
     <section ref={scope} className="relative border-t border-line-soft/50 py-24 md:py-32">
       <div className="shell">
         <div data-cai-head className="mb-14 max-w-2xl">
-          <p className="label mb-5">Cinematic AI</p>
-          <h2 className="text-major">Generated footage, shot like film</h2>
+          <p className="label mb-5">{pick(COPY.label)}</p>
+          <h2 className="text-major">{pick(COPY.title)}</h2>
           <p className="mt-6 text-[0.95rem] leading-relaxed text-ink-70">
-            Most AI video reads as AI video — flat motion, no camera logic, nothing a
-            cinematographer would sign off on. We direct it the way we direct a shoot:
-            tracking, handheld, reveals, blocking. The output holds up next to footage we
-            captured on location.
+            {pick(COPY.body)}
           </p>
         </div>
 
-        <div data-cai-grid className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <div dir="ltr" data-cai-grid className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {CLIPS.map((clip) => (
             <div key={clip.id} data-cai-clip>
               <VimeoClip

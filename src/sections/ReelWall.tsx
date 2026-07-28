@@ -1,5 +1,15 @@
 import { VimeoClip } from '../components/VimeoClip';
 import { gsap, useGsapContext, prefersReducedMotion } from '../lib/gsap';
+import { usePick } from '../lib/language';
+
+const COPY = {
+  label: { en: 'In motion', ar: 'قيد الحركة' },
+  title: { en: 'Cuts from the floor', ar: 'مقاطع من غرفة المونتاج' },
+  body: {
+    en: 'Recent pieces, finished in house. Every project leaves with the wide master and the vertical cutdowns specced from the start, not scrambled for at the end.',
+    ar: 'أعمال حديثة، أُنجزت داخلياً. كل مشروع يخرج بالنسخة الرئيسية العريضة والنسخ العمودية المحددة من البداية، لا التي تُجهّز على عجل في النهاية.',
+  },
+};
 
 /** Landscape-framed pieces. */
 const WIDE = [
@@ -21,6 +31,7 @@ const VERTICAL = [
  * deliverables run beneath, so the section shows both formats we finish in.
  */
 export function ReelWall() {
+  const pick = usePick();
   const scope = useGsapContext<HTMLElement>(() => {
     if (prefersReducedMotion()) return;
 
@@ -56,15 +67,14 @@ export function ReelWall() {
     <section ref={scope} className="relative border-t border-on-cream/12 bg-cream py-24 md:py-32">
       <div className="shell">
         <div data-reel-head className="mb-14 max-w-2xl">
-          <p className="label mb-5 text-on-cream-soft">In motion</p>
-          <h2 className="text-major text-on-cream">Cuts from the floor</h2>
+          <p className="label mb-5 text-on-cream-soft">{pick(COPY.label)}</p>
+          <h2 className="text-major text-on-cream">{pick(COPY.title)}</h2>
           <p className="mt-6 text-[0.95rem] leading-relaxed text-on-cream-soft">
-            Recent pieces, finished in house. Every project leaves with the wide master
-            and the vertical cutdowns specced from the start, not scrambled for at the end.
+            {pick(COPY.body)}
           </p>
         </div>
 
-        <div data-reel-wide-grid className="grid gap-3 md:grid-cols-2">
+        <div dir="ltr" data-reel-wide-grid className="grid gap-3 md:grid-cols-2">
           {WIDE.map((clip, i) => (
             <div
               key={clip.id}
@@ -82,6 +92,7 @@ export function ReelWall() {
         </div>
 
         <div
+          dir="ltr"
           data-reel-vert-grid
           className="mt-3 grid grid-cols-2 gap-3 md:grid-cols-4"
         >

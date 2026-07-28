@@ -2,8 +2,19 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { studio } from '../lib/content';
 import { gsap, useGsapContext, prefersReducedMotion } from '../lib/gsap';
+import { usePick } from '../lib/language';
 
 const BARS = 16;
+
+const COPY = {
+  label: { en: 'Next step', ar: 'الخطوة التالية' },
+  title: {
+    en: 'Tell us what you are trying to say. We will work out how to film it.',
+    ar: 'أخبرنا بما تريد قوله، ونحن نتولى كيفية تصويره.',
+  },
+  start: { en: 'Start a project', ar: 'ابدأ مشروعاً' },
+  orEmail: { en: 'or email', ar: 'أو راسلنا على' },
+};
 
 /**
  * Motion concept 21 — melt to text.
@@ -12,6 +23,7 @@ const BARS = 16;
  * instead of sliding, and the headline underneath is left crisp.
  */
 export function CTAMelt() {
+  const pick = usePick();
   const scope = useGsapContext<HTMLElement>(({ scope }) => {
     if (prefersReducedMotion()) {
       gsap.set('[data-melt-bar]', { yPercent: 110 });
@@ -74,16 +86,14 @@ export function CTAMelt() {
           </div>
 
           <div data-melt-content className="relative z-10 text-center">
-            <p className="label mb-7">Next step</p>
-            <h2 className="text-major mx-auto max-w-3xl">
-              Tell us what you are trying to say. We will work out how to film it.
-            </h2>
+            <p className="label mb-7">{pick(COPY.label)}</p>
+            <h2 className="text-major mx-auto max-w-3xl">{pick(COPY.title)}</h2>
             <div className="mt-12 flex flex-col items-center justify-center gap-5 sm:flex-row">
               <Link
                 to="/contact"
                 className="group inline-flex items-center gap-2.5 rounded-full bg-cream px-7 py-3.5 text-sm font-medium text-on-cream transition-colors hover:bg-brulee"
               >
-                Start a project
+                {pick(COPY.start)}
                 <ArrowRight
                   size={16}
                   className="transition-transform duration-300 group-hover:translate-x-1"
@@ -93,7 +103,7 @@ export function CTAMelt() {
                 href={`mailto:${studio.email}`}
                 className="text-sm text-ink-45 transition-colors hover:text-ink-100"
               >
-                or email {studio.email}
+                {pick(COPY.orEmail)} <span dir="ltr">{studio.email}</span>
               </a>
             </div>
           </div>

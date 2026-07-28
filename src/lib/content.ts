@@ -30,11 +30,21 @@ export interface Project {
   client?: string;
   runtime: string;
   discipline: Discipline;
-  summary: string;
+  summary: { en: string; ar: string };
   poster: string;
   video?: string;
   featured?: boolean;
 }
+
+/** Display labels for discipline filters/badges — the Discipline values themselves stay English internal keys. */
+export const disciplineLabels: Record<Discipline | 'All', { en: string; ar: string }> = {
+  All: { en: 'All', ar: 'الكل' },
+  Documentary: { en: 'Documentary', ar: 'وثائقي' },
+  Drama: { en: 'Drama', ar: 'دراما' },
+  Advertising: { en: 'Advertising', ar: 'إعلانات' },
+  Promo: { en: 'Promo', ar: 'برومو' },
+  VFX: { en: 'VFX', ar: 'مؤثرات بصرية' },
+};
 
 /**
  * Real catalogue. Summaries are descriptive placeholders pending sign-off.
@@ -46,7 +56,10 @@ export const projects: Project[] = [
     client: 'Ahmed Amin',
     runtime: '00:58',
     discipline: 'Drama',
-    summary: 'Scripted piece produced with Ahmed Amin.',
+    summary: {
+      en: 'Scripted piece produced with Ahmed Amin.',
+      ar: 'عمل درامي مكتوب أُنتج بالتعاون مع أحمد أمين.',
+    },
     poster: '/media/work/al-warsha.jpg',
   },
   {
@@ -55,7 +68,10 @@ export const projects: Project[] = [
     client: 'Al Jazeera',
     runtime: '00:31',
     discipline: 'Promo',
-    summary: 'World Cup broadcast promo produced for Al Jazeera.',
+    summary: {
+      en: 'World Cup broadcast promo produced for Al Jazeera.',
+      ar: 'برومو تلفزيوني لكأس العالم أُنتج لصالح الجزيرة.',
+    },
     poster: '/media/work/alrihla-world-cup.jpg',
     featured: true,
   },
@@ -64,7 +80,10 @@ export const projects: Project[] = [
     title: 'ShjSeen Hyperlapses',
     runtime: '03:38',
     discipline: 'Promo',
-    summary: 'Hyperlapse-driven city promo, the longest promo in the catalogue.',
+    summary: {
+      en: 'Hyperlapse-driven city promo, the longest promo in the catalogue.',
+      ar: 'برومو مديني معتمد على تقنية الهايبرلابس، الأطول ضمن الكتالوج.',
+    },
     poster: '/media/work/shjseen-hyperlapses.jpg',
     featured: true,
   },
@@ -74,7 +93,10 @@ export const projects: Project[] = [
     client: 'Robolabs',
     runtime: '00:59',
     discipline: 'Advertising',
-    summary: 'Product commercial for a consumer robotics launch.',
+    summary: {
+      en: 'Product commercial for a consumer robotics launch.',
+      ar: 'إعلان منتج لإطلاق جهاز روبوتات استهلاكي.',
+    },
     poster: '/media/work/cbot-robolabs.jpg',
     featured: true,
   },
@@ -83,7 +105,10 @@ export const projects: Project[] = [
     title: 'Altar Solar Energy',
     runtime: '01:42',
     discipline: 'Advertising',
-    summary: 'Corporate film for a renewable energy operator.',
+    summary: {
+      en: 'Corporate film for a renewable energy operator.',
+      ar: 'فيلم مؤسسي لشركة تشغّل حلول الطاقة المتجددة.',
+    },
     poster: '/media/work/altar-solar.jpg',
     featured: true,
   },
@@ -93,7 +118,10 @@ export const projects: Project[] = [
     client: 'Total Yogurt',
     runtime: '00:52',
     discipline: 'Advertising',
-    summary: 'Consumer brand spot built around a children’s imagination premise.',
+    summary: {
+      en: 'Consumer brand spot built around a children’s imagination premise.',
+      ar: 'إعلان تجاري مبني على فكرة خيال الأطفال.',
+    },
     poster: '/media/work/total-yogurt.jpg',
   },
   {
@@ -101,7 +129,7 @@ export const projects: Project[] = [
     title: 'Rekaz',
     runtime: '01:15',
     discipline: 'Advertising',
-    summary: 'Brand commercial.',
+    summary: { en: 'Brand commercial.', ar: 'إعلان تجاري للعلامة.' },
     poster: '/media/work/rekaz.jpg',
   },
   {
@@ -109,7 +137,10 @@ export const projects: Project[] = [
     title: 'Ghayeb',
     runtime: '00:33',
     discipline: 'Promo',
-    summary: 'Campaign promo, including behind-the-scenes coverage.',
+    summary: {
+      en: 'Campaign promo, including behind-the-scenes coverage.',
+      ar: 'برومو حملة إعلانية مع تغطية من خلف الكواليس.',
+    },
     poster: '/media/work/ghayeb.jpg',
   },
   {
@@ -117,7 +148,10 @@ export const projects: Project[] = [
     title: 'Minimalism',
     runtime: '00:41',
     discipline: 'Promo',
-    summary: 'Promo built entirely on minimalist composition and graphic staging.',
+    summary: {
+      en: 'Promo built entirely on minimalist composition and graphic staging.',
+      ar: 'برومو مبني بالكامل على تكوين بصري وإخراج جرافيكي بسيط.',
+    },
     poster: '/media/work/promo-minimalism.jpg',
   },
   {
@@ -125,7 +159,10 @@ export const projects: Project[] = [
     title: 'LEGO Bridge',
     runtime: '02:00',
     discipline: 'VFX',
-    summary: 'Visual effects build and compositing piece.',
+    summary: {
+      en: 'Visual effects build and compositing piece.',
+      ar: 'عمل مؤثرات بصرية وتركيب رقمي (كومبوزيتنغ).',
+    },
     poster: '/media/work/lego-vfx-bridge.jpg',
   },
 ];
@@ -150,97 +187,162 @@ export const clients = [
   'Ahmed Amin',
 ];
 
+type Bi = { en: string; ar: string };
+
 export interface Service {
   index: string;
-  title: string;
-  description: string;
-  deliverables: string[];
+  title: Bi;
+  description: Bi;
+  deliverables: Bi[];
 }
 
 export const services: Service[] = [
   {
     index: '01',
-    title: 'Documentary',
-    description:
-      'Long and short-form documentary, from research and access through to final delivery. The bulk of our catalogue sits here.',
-    deliverables: ['Research', 'Field production', 'Archive', 'Long-form edit'],
+    title: { en: 'Documentary', ar: 'الأفلام الوثائقية' },
+    description: {
+      en: 'Long and short-form documentary, from research and access through to final delivery. The bulk of our catalogue sits here.',
+      ar: 'أفلام وثائقية طويلة وقصيرة، من البحث والوصول إلى التسليم النهائي. الجزء الأكبر من أعمالنا يقع هنا.',
+    },
+    deliverables: [
+      { en: 'Research', ar: 'البحث' },
+      { en: 'Field production', ar: 'الإنتاج الميداني' },
+      { en: 'Archive', ar: 'الأرشيف' },
+      { en: 'Long-form edit', ar: 'المونتاج الطويل' },
+    ],
   },
   {
     index: '02',
-    title: 'Advertising',
-    description:
-      'Commercials and brand films for consumer, industrial, and technology clients.',
-    deliverables: ['Concept', 'Direction', 'Production', 'Delivery'],
+    title: { en: 'Advertising', ar: 'الإعلانات' },
+    description: {
+      en: 'Commercials and brand films for consumer, industrial, and technology clients.',
+      ar: 'إعلانات وأفلام علامة تجارية لعملاء استهلاكيين وصناعيين وتقنيين.',
+    },
+    deliverables: [
+      { en: 'Concept', ar: 'الفكرة' },
+      { en: 'Direction', ar: 'الإخراج' },
+      { en: 'Production', ar: 'الإنتاج' },
+      { en: 'Delivery', ar: 'التسليم' },
+    ],
   },
   {
     index: '03',
-    title: 'Promos & Shorts',
-    description:
-      'Broadcast promos and short-form pieces, including work delivered for regional networks.',
-    deliverables: ['Broadcast promos', 'Short form', 'Cutdowns', 'Social variants'],
+    title: { en: 'Promos & Shorts', ar: 'البرومو والأعمال القصيرة' },
+    description: {
+      en: 'Broadcast promos and short-form pieces, including work delivered for regional networks.',
+      ar: 'برومو تلفزيوني وأعمال قصيرة، بما في ذلك أعمال سُلّمت لشبكات إقليمية.',
+    },
+    deliverables: [
+      { en: 'Broadcast promos', ar: 'برومو تلفزيوني' },
+      { en: 'Short form', ar: 'أعمال قصيرة' },
+      { en: 'Cutdowns', ar: 'نسخ مختصرة' },
+      { en: 'Social variants', ar: 'نسخ لمنصات التواصل' },
+    ],
   },
   {
     index: '04',
-    title: 'Drama',
-    description: 'Scripted short-form drama, developed and produced in-house.',
-    deliverables: ['Development', 'Scripting', 'Casting', 'Production'],
+    title: { en: 'Drama', ar: 'الدراما' },
+    description: {
+      en: 'Scripted short-form drama, developed and produced in-house.',
+      ar: 'أعمال درامية قصيرة مكتوبة، تُطوَّر وتُنتَج داخلياً.',
+    },
+    deliverables: [
+      { en: 'Development', ar: 'التطوير' },
+      { en: 'Scripting', ar: 'كتابة السيناريو' },
+      { en: 'Casting', ar: 'اختيار الممثلين' },
+      { en: 'Production', ar: 'الإنتاج' },
+    ],
   },
   {
     index: '05',
-    title: 'VFX & Post',
-    description:
-      'Visual effects, compositing, and finishing, handled alongside the edit rather than bolted on afterwards.',
-    deliverables: ['VFX', 'Compositing', 'Grade', 'Sound'],
+    title: { en: 'VFX & Post', ar: 'المؤثرات البصرية وما بعد الإنتاج' },
+    description: {
+      en: 'Visual effects, compositing, and finishing, handled alongside the edit rather than bolted on afterwards.',
+      ar: 'مؤثرات بصرية وتركيب رقمي وتجهيز نهائي، تُدار جنباً إلى جنب مع المونتاج لا بعده.',
+    },
+    deliverables: [
+      { en: 'VFX', ar: 'مؤثرات بصرية' },
+      { en: 'Compositing', ar: 'تركيب رقمي' },
+      { en: 'Grade', ar: 'تصحيح الألوان' },
+      { en: 'Sound', ar: 'الصوت' },
+    ],
   },
   {
     index: '06',
-    title: 'Media & PR',
-    description:
-      'Narrative strategy and media relations, carried over from the studio’s work as a media PR house.',
-    deliverables: ['Narrative strategy', 'Media relations', 'Campaign planning'],
+    title: { en: 'Media & PR', ar: 'الإعلام والعلاقات العامة' },
+    description: {
+      en: 'Narrative strategy and media relations, carried over from the studio’s work as a media PR house.',
+      ar: 'استراتيجية سردية وعلاقات إعلامية، امتداداً لعمل الاستوديو كبيت علاقات عامة إعلامي.',
+    },
+    deliverables: [
+      { en: 'Narrative strategy', ar: 'الاستراتيجية السردية' },
+      { en: 'Media relations', ar: 'العلاقات الإعلامية' },
+      { en: 'Campaign planning', ar: 'تخطيط الحملات' },
+    ],
   },
 ];
 
-export const principles = [
+export const principles: { title: Bi; body: Bi }[] = [
   {
-    title: 'We take the difficult briefs',
-    body: 'A large part of the catalogue is reporting that took access, patience, and a tolerance for subjects other studios turn down.',
+    title: { en: 'We take the difficult briefs', ar: 'نتولى التكليفات الصعبة' },
+    body: {
+      en: 'A large part of the catalogue is reporting that took access, patience, and a tolerance for subjects other studios turn down.',
+      ar: 'جزء كبير من أعمالنا هو تقارير تطلّبت وصولاً وصبراً وقدرة على تناول مواضيع ترفضها استوديوهات أخرى.',
+    },
   },
   {
-    title: 'The edit is where it is won',
-    body: 'Several of these films run past twenty minutes. That length only holds if post is budgeted like production, not after it.',
+    title: { en: 'The edit is where it is won', ar: 'المونتاج هو حيث يُحسم العمل' },
+    body: {
+      en: 'Several of these films run past twenty minutes. That length only holds if post is budgeted like production, not after it.',
+      ar: 'العديد من هذه الأفلام يتجاوز العشرين دقيقة. هذا الطول لا يصمد إلا إذا خُصصت له ميزانية ما بعد الإنتاج كالإنتاج نفسه، لا كإضافة لاحقة.',
+    },
   },
   {
-    title: 'One team, start to finish',
-    body: 'Research, shoot, VFX, and grade sit under one roof, so nothing is lost in a handover.',
+    title: { en: 'One team, start to finish', ar: 'فريق واحد من البداية إلى النهاية' },
+    body: {
+      en: 'Research, shoot, VFX, and grade sit under one roof, so nothing is lost in a handover.',
+      ar: 'البحث والتصوير والمؤثرات البصرية وتصحيح الألوان كلها تحت سقف واحد، فلا يضيع شيء عند التسليم بين الفرق.',
+    },
   },
 ];
 
 export interface TimelineEntry {
   year: string;
-  title: string;
-  body: string;
+  title: Bi;
+  body: Bi;
 }
 
 export const timeline: TimelineEntry[] = [
   {
     year: '2018',
-    title: 'Founded',
-    body: 'Started as an entertainment and media PR house, taking commercial work alongside the first documentary commissions.',
+    title: { en: 'Founded', ar: 'التأسيس' },
+    body: {
+      en: 'Started as an entertainment and media PR house, taking commercial work alongside the first documentary commissions.',
+      ar: 'بدأنا كبيت علاقات عامة إعلامي وترفيهي، مع أعمال تجارية إلى جانب أولى التكليفات الوثائقية.',
+    },
   },
   {
     year: '2020',
-    title: 'Into long-form',
-    body: 'The first films past the twenty-minute mark, and the post pipeline built to support them.',
+    title: { en: 'Into long-form', ar: 'الانتقال إلى الأعمال الطويلة' },
+    body: {
+      en: 'The first films past the twenty-minute mark, and the post pipeline built to support them.',
+      ar: 'أول أفلام تتجاوز العشرين دقيقة، وخط إنتاج ما بعد التصوير الذي بُني لدعمها.',
+    },
   },
   {
     year: '2022',
-    title: 'Broadcast work',
-    body: 'Promo and campaign work delivered for regional broadcasters, including Al Jazeera.',
+    title: { en: 'Broadcast work', ar: 'العمل التلفزيوني' },
+    body: {
+      en: 'Promo and campaign work delivered for regional broadcasters, including Al Jazeera.',
+      ar: 'أعمال برومو وحملات سُلّمت لمحطات بث إقليمية، من بينها الجزيرة.',
+    },
   },
   {
     year: '2025',
-    title: 'Rebranded to Roaya',
-    body: 'A new name, a new base, and a catalogue of more than eighty films behind it.',
+    title: { en: 'Rebranded to Roaya', ar: 'إعادة التسمية إلى رؤية' },
+    body: {
+      en: 'A new name, a new base, and a catalogue of more than eighty films behind it.',
+      ar: 'اسم جديد، ومقر جديد، وأكثر من ثمانين فيلماً في الرصيد.',
+    },
   },
 ];

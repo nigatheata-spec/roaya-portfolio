@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { navItems, studio } from '../lib/content';
+import { useLanguage } from '../lib/language';
 
 /** Routes whose first section sits on a cream surface, so the nav must invert. */
 const LIGHT_TOP_ROUTES = ['/services'];
@@ -10,6 +11,7 @@ export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const location = useLocation();
+  const { lang, toggle } = useLanguage();
 
   // Only while pinned over the light hero; once scrolled the bar gets its own dark fill.
   const onLight = LIGHT_TOP_ROUTES.includes(location.pathname) && !scrolled && !open;
@@ -41,13 +43,22 @@ export function Nav() {
       <div className="shell flex items-center justify-between py-5">
         <Link
           to="/"
-          className={`font-display text-[1.35rem] font-extrabold tracking-[-0.05em] ${
-            onLight ? 'text-on-cream' : 'text-ink-100'
-          }`}
+          className="flex items-center gap-2.5"
           aria-label={`${studio.name} — home`}
         >
-          {studio.name}
-          <span className="text-brulee">.</span>
+          <img
+            src={onLight ? '/media/brand/mark-black.png' : '/media/brand/mark-white.png'}
+            alt=""
+            className="h-8 w-8"
+          />
+          <span
+            className={`font-display text-[1.35rem] font-extrabold tracking-[-0.05em] ${
+              onLight ? 'text-on-cream' : 'text-ink-100'
+            }`}
+          >
+            {studio.name}
+            <span className="text-brulee">.</span>
+          </span>
         </Link>
 
         <nav className="hidden items-center gap-9 md:flex" aria-label="Primary">
@@ -68,7 +79,19 @@ export function Nav() {
           ))}
         </nav>
 
-        <div className="hidden md:block">
+        <div className="hidden items-center gap-3 md:flex">
+          <button
+            type="button"
+            onClick={toggle}
+            className={`label rounded-full border px-3 py-1.5 transition-colors duration-300 ${
+              onLight
+                ? 'border-on-cream/30 text-on-cream hover:border-brulee'
+                : 'border-line text-ink-100 hover:border-brulee'
+            }`}
+            aria-label="Switch language"
+          >
+            {lang === 'en' ? 'العربية' : 'English'}
+          </button>
           <Link
             to="/contact"
             className={`group relative inline-flex items-center overflow-hidden rounded-full border px-5 py-2 text-[0.8rem] font-medium transition-colors duration-300 hover:border-brulee ${
@@ -104,12 +127,21 @@ export function Nav() {
               {item.label}
             </NavLink>
           ))}
-          <Link
-            to="/contact"
-            className="mt-4 inline-flex w-fit rounded-full bg-brulee px-5 py-2.5 text-sm font-medium text-void"
-          >
-            Start a project
-          </Link>
+          <div className="mt-4 flex items-center gap-3">
+            <Link
+              to="/contact"
+              className="inline-flex w-fit rounded-full bg-brulee px-5 py-2.5 text-sm font-medium text-void"
+            >
+              Start a project
+            </Link>
+            <button
+              type="button"
+              onClick={toggle}
+              className="label rounded-full border border-line px-4 py-2.5 text-ink-100"
+            >
+              {lang === 'en' ? 'العربية' : 'English'}
+            </button>
+          </div>
         </div>
       )}
     </header>

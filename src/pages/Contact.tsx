@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { Mail, Phone, MapPin, ArrowUpRight } from 'lucide-react';
 import { studio, services } from '../lib/content';
 import { gsap, useGsapContext, prefersReducedMotion } from '../lib/gsap';
+import { usePick } from '../lib/language';
 
 /** Circuit-like routes that converge toward the centre of the panel. */
 const ROUTES = [
@@ -12,12 +13,41 @@ const ROUTES = [
   'M760,120 V220 H600 V300',
 ];
 
+const COPY = {
+  eyebrow: { en: 'Contact', ar: 'تواصل معنا' },
+  title: { en: 'Say hello', ar: 'تواصل معنا' },
+  intro: {
+    en: 'Tell us the subject, the deadline, and what you already have. If it is a documentary, tell us who has agreed to talk.',
+    ar: 'أخبرنا بالموضوع، والموعد النهائي، وما هو متوفر لديك بالفعل. إن كان فيلماً وثائقياً، أخبرنا من وافق على الحديث.',
+  },
+  email: { en: 'Email', ar: 'البريد الإلكتروني' },
+  phone: { en: 'Phone', ar: 'الهاتف' },
+  studio: { en: 'Studio', ar: 'الاستوديو' },
+  watchReel: { en: 'Watch the reel on Vimeo', ar: 'شاهد المقطع على فيميو' },
+  name: { en: 'Name', ar: 'الاسم' },
+  namePlaceholder: { en: 'Your name', ar: 'اسمك' },
+  company: { en: 'Company', ar: 'الشركة' },
+  companyPlaceholder: { en: 'Optional', ar: 'اختياري' },
+  whatDoYouNeed: { en: 'What do you need', ar: 'ما الذي تحتاجه' },
+  brief: { en: 'Brief', ar: 'الموجز' },
+  briefPlaceholder: {
+    en: 'Subject, deadline, what exists already.',
+    ar: 'الموضوع، الموعد النهائي، وما هو متوفر بالفعل.',
+  },
+  compose: { en: 'Compose email', ar: 'إنشاء رسالة' },
+  note: {
+    en: 'This opens your mail app with the details filled in. Nothing is sent from the site itself.',
+    ar: 'سيفتح هذا تطبيق البريد لديك مع تعبئة التفاصيل. لا يتم إرسال أي شيء من الموقع نفسه.',
+  },
+};
+
 export function Contact() {
+  const pick = usePick();
   const paths = useRef<(SVGPathElement | null)[]>([]);
   const [form, setForm] = useState({
     name: '',
     company: '',
-    scope: services[0].title,
+    scope: services[0].title.en,
     message: '',
   });
 
@@ -89,17 +119,16 @@ export function Contact() {
         <div className="shell relative">
           <p data-contact-fade className="label mb-8 flex items-center gap-3">
             <span className="inline-block h-px w-8 bg-brulee" />
-            Contact
+            {pick(COPY.eyebrow)}
           </p>
           <h1 data-contact-fade className="text-mega font-extrabold">
-            Say hello
+            {pick(COPY.title)}
           </h1>
           <p
             data-contact-fade
             className="mt-10 max-w-xl text-[0.95rem] leading-relaxed text-ink-70"
           >
-            Tell us the subject, the deadline, and what you already have. If it is a
-            documentary, tell us who has agreed to talk.
+            {pick(COPY.intro)}
           </p>
         </div>
       </section>
@@ -113,7 +142,7 @@ export function Contact() {
             >
               <Mail size={17} className="mt-1 shrink-0 text-brulee" />
               <span>
-                <span className="label block">Email</span>
+                <span className="label block">{pick(COPY.email)}</span>
                 <span className="mt-2 block text-[0.95rem] text-ink-100 transition-colors group-hover:text-brulee">
                   {studio.email}
                 </span>
@@ -126,7 +155,7 @@ export function Contact() {
             >
               <Phone size={17} className="mt-1 shrink-0 text-brulee" />
               <span>
-                <span className="label block">Phone</span>
+                <span className="label block">{pick(COPY.phone)}</span>
                 <span className="mt-2 block text-[0.95rem] text-ink-100 transition-colors group-hover:text-brulee">
                   {studio.phone}
                 </span>
@@ -136,7 +165,7 @@ export function Contact() {
             <div className="flex items-start gap-4 border-t border-line-soft/70 pt-6">
               <MapPin size={17} className="mt-1 shrink-0 text-brulee" />
               <span>
-                <span className="label block">Studio</span>
+                <span className="label block">{pick(COPY.studio)}</span>
                 <span className="mt-2 block text-[0.95rem] text-ink-100">{studio.city}</span>
               </span>
             </div>
@@ -147,7 +176,7 @@ export function Contact() {
               rel="noreferrer noopener"
               className="group flex items-center gap-2 border-t border-line-soft/70 pt-6 text-[0.95rem] text-ink-70 transition-colors hover:text-brulee"
             >
-              Watch the reel on Vimeo
+              {pick(COPY.watchReel)}
               <ArrowUpRight
                 size={15}
                 className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
@@ -165,50 +194,50 @@ export function Contact() {
           >
             <div className="grid gap-7 sm:grid-cols-2">
               <label className="block">
-                <span className="label mb-1 block">Name</span>
+                <span className="label mb-1 block">{pick(COPY.name)}</span>
                 <input
                   required
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
                   className={field}
-                  placeholder="Your name"
+                  placeholder={pick(COPY.namePlaceholder)}
                 />
               </label>
               <label className="block">
-                <span className="label mb-1 block">Company</span>
+                <span className="label mb-1 block">{pick(COPY.company)}</span>
                 <input
                   value={form.company}
                   onChange={(e) => setForm({ ...form, company: e.target.value })}
                   className={field}
-                  placeholder="Optional"
+                  placeholder={pick(COPY.companyPlaceholder)}
                 />
               </label>
             </div>
 
             <label className="block">
-              <span className="label mb-1 block">What do you need</span>
+              <span className="label mb-1 block">{pick(COPY.whatDoYouNeed)}</span>
               <select
                 value={form.scope}
                 onChange={(e) => setForm({ ...form, scope: e.target.value })}
                 className={`${field} appearance-none`}
               >
                 {services.map((s) => (
-                  <option key={s.index} value={s.title} className="bg-void text-ink-100">
-                    {s.title}
+                  <option key={s.index} value={s.title.en} className="bg-void text-ink-100">
+                    {pick(s.title)}
                   </option>
                 ))}
               </select>
             </label>
 
             <label className="block">
-              <span className="label mb-1 block">Brief</span>
+              <span className="label mb-1 block">{pick(COPY.brief)}</span>
               <textarea
                 required
                 rows={5}
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
                 className={`${field} resize-none`}
-                placeholder="Subject, deadline, what exists already."
+                placeholder={pick(COPY.briefPlaceholder)}
               />
             </label>
 
@@ -216,16 +245,13 @@ export function Contact() {
               type="submit"
               className="group inline-flex items-center gap-2.5 rounded-full bg-cream px-7 py-3.5 text-sm font-medium text-on-cream transition-colors hover:bg-brulee"
             >
-              Compose email
+              {pick(COPY.compose)}
               <ArrowUpRight
                 size={16}
                 className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
               />
             </button>
-            <p className="text-xs text-ink-25">
-              This opens your mail app with the details filled in. Nothing is sent from
-              the site itself.
-            </p>
+            <p className="text-xs text-ink-25">{pick(COPY.note)}</p>
           </form>
         </div>
       </section>

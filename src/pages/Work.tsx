@@ -3,10 +3,30 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { Media } from '../components/Media';
 import { ShatterTitle } from '../components/ShatterTitle';
-import { projects, disciplines, type Discipline } from '../lib/content';
+import { projects, disciplines, disciplineLabels, type Discipline } from '../lib/content';
 import { gsap, useGsapContext } from '../lib/gsap';
+import { usePick } from '../lib/language';
+
+const COPY = {
+  eyebrow: { en: 'Catalogue', ar: 'الأعمال' },
+  title: { en: 'Work', ar: 'الأعمال' },
+  intro: {
+    en: 'Documentary, drama, advertising, and broadcast promos. Long-form reporting sits alongside commercial work, and both are finished in the same room.',
+    ar: 'أفلام وثائقية ودراما وإعلانات وبرومو تلفزيوني. التقارير الطويلة تقف جنباً إلى جنب مع الأعمال التجارية، وكلاهما يُنجز في نفس الاستوديو.',
+  },
+  archiveTitle: {
+    en: 'The full archive runs well past what is shown here.',
+    ar: 'الأرشيف الكامل يتجاوز بكثير ما هو معروض هنا.',
+  },
+  archiveBody: {
+    en: 'Ask us for reels cut to a specific brief, a region, or a format.',
+    ar: 'اطلب منا مقاطع مجهّزة بحسب طلب محدد، أو منطقة، أو صيغة معينة.',
+  },
+  requestReel: { en: 'Request a reel', ar: 'اطلب مقطعاً' },
+};
 
 export function Work() {
+  const pick = usePick();
   const [active, setActive] = useState<Discipline | 'All'>('All');
 
   const filtered = useMemo(
@@ -39,12 +59,11 @@ export function Work() {
       <section className="shell pb-16 pt-40">
         <p className="label mb-8 flex items-center gap-3">
           <span className="inline-block h-px w-8 bg-brulee" />
-          Catalogue
+          {pick(COPY.eyebrow)}
         </p>
-        <ShatterTitle className="text-mega font-extrabold">Work</ShatterTitle>
+        <ShatterTitle className="text-mega font-extrabold">{pick(COPY.title)}</ShatterTitle>
         <p className="mt-10 max-w-xl text-[0.95rem] leading-relaxed text-ink-70">
-          Documentary, drama, advertising, and broadcast promos. Long-form reporting
-          sits alongside commercial work, and both are finished in the same room.
+          {pick(COPY.intro)}
         </p>
       </section>
 
@@ -64,7 +83,7 @@ export function Work() {
                     : 'border-line-soft text-ink-45 hover:border-line hover:text-ink-100'
                 }`}
               >
-                {d}
+                {pick(disciplineLabels[d])}
                 <span className="ml-2 opacity-60">{counts.get(d) ?? 0}</span>
               </button>
             );
@@ -92,10 +111,10 @@ export function Work() {
                   <h2 className="text-[1.2rem] font-bold leading-tight tracking-[-0.03em]">
                     {p.title}
                   </h2>
-                  <span className="label shrink-0">{p.discipline}</span>
+                  <span className="label shrink-0">{pick(disciplineLabels[p.discipline])}</span>
                 </div>
                 {p.client && <p className="mt-1.5 text-sm text-brulee">{p.client}</p>}
-                <p className="mt-3 text-sm leading-relaxed text-ink-45">{p.summary}</p>
+                <p className="mt-3 text-sm leading-relaxed text-ink-45">{pick(p.summary)}</p>
               </div>
             </article>
           ))}
@@ -106,17 +125,17 @@ export function Work() {
         <div className="shell flex flex-col items-start gap-8 md:flex-row md:items-center md:justify-between">
           <div>
             <h2 className="text-minor max-w-lg font-bold text-on-cream">
-              The full archive runs well past what is shown here.
+              {pick(COPY.archiveTitle)}
             </h2>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-on-cream-soft">
-              Ask us for reels cut to a specific brief, a region, or a format.
+              {pick(COPY.archiveBody)}
             </p>
           </div>
           <Link
             to="/contact"
             className="group inline-flex shrink-0 items-center gap-2.5 rounded-full bg-on-cream px-7 py-3.5 text-sm font-medium text-cream transition-colors hover:bg-brulee"
           >
-            Request a reel
+            {pick(COPY.requestReel)}
             <ArrowRight
               size={16}
               className="transition-transform duration-300 group-hover:translate-x-1"

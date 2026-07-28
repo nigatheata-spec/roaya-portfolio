@@ -2,6 +2,13 @@ import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
 import { services } from '../lib/content';
 import { gsap, useGsapContext, prefersReducedMotion } from '../lib/gsap';
+import { usePick } from '../lib/language';
+
+const COPY = {
+  eyebrow: { en: 'Capability', ar: 'القدرات' },
+  title: { en: 'Everything under one roof', ar: 'كل شيء تحت سقف واحد' },
+  howWeWork: { en: 'How we work', ar: 'كيف نعمل' },
+};
 
 /** Deterministic scatter so every render starts from the same disordered state. */
 const scatter = (i: number) => {
@@ -23,6 +30,7 @@ const scatter = (i: number) => {
  * then snap into a single resolved grid as the section reaches centre.
  */
 export function ServicesReconfig() {
+  const pick = usePick();
   const scope = useGsapContext<HTMLElement>(({ scope }) => {
     const cards = gsap.utils.toArray<HTMLElement>('[data-widget]', scope);
 
@@ -61,14 +69,14 @@ export function ServicesReconfig() {
       <div className="shell">
         <div className="mb-14 flex flex-wrap items-end justify-between gap-6">
           <div>
-            <p className="label mb-5">Capability</p>
-            <h2 className="text-major max-w-xl">Everything under one roof</h2>
+            <p className="label mb-5">{pick(COPY.eyebrow)}</p>
+            <h2 className="text-major max-w-xl">{pick(COPY.title)}</h2>
           </div>
           <Link
             to="/services"
             className="group inline-flex items-center gap-2 text-sm text-ink-70 transition-colors hover:text-brulee"
           >
-            How we work
+            {pick(COPY.howWeWork)}
             <ArrowUpRight
               size={15}
               className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
@@ -95,12 +103,12 @@ export function ServicesReconfig() {
                     {String(i + 1).padStart(2, '0')} / {services.length}
                   </span>
                 </div>
-                <h3 className="text-[1.3rem] font-bold tracking-[-0.03em] text-on-cream">{s.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-on-cream-soft">{s.description}</p>
+                <h3 className="text-[1.3rem] font-bold tracking-[-0.03em] text-on-cream">{pick(s.title)}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-on-cream-soft">{pick(s.description)}</p>
                 <ul className="mt-6 flex flex-wrap gap-x-3 gap-y-1.5">
                   {s.deliverables.map((d) => (
-                    <li key={d} className="text-xs text-on-cream-soft/70">
-                      {d}
+                    <li key={d.en} className="text-xs text-on-cream-soft/70">
+                      {pick(d)}
                     </li>
                   ))}
                 </ul>
