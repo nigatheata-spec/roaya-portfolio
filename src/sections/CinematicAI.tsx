@@ -54,7 +54,13 @@ export function CinematicAI() {
         <div data-cai-grid className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {CLIPS.map((clip) => (
             <div key={clip.id} data-cai-clip>
-              <VimeoClip id={clip.id} title={clip.title} aspect="4 / 3" className="rounded-2xl" />
+              <VimeoClip
+                id={clip.id}
+                title={clip.title}
+                aspect="4 / 3"
+                videoAspect="16 / 9"
+                className="rounded-2xl"
+              />
             </div>
           ))}
         </div>
