@@ -1,9 +1,13 @@
 import { gsap, SplitText, useGsapContext, prefersReducedMotion } from '../lib/gsap';
+import { useLanguage } from '../lib/language';
 
 /**
  * Motion concept 55 — shatter then reform.
  * The heading starts as fragments scattered through space and is pulled back into
  * alignment, rather than fading up as a block.
+ *
+ * Skipped for Arabic: splitting into chars breaks cursive letter joining, so
+ * the word reads as disconnected fragments even after it "reforms".
  */
 export function ShatterTitle({
   children,
@@ -12,8 +16,10 @@ export function ShatterTitle({
   children: string;
   className?: string;
 }) {
+  const { lang } = useLanguage();
+
   const scope = useGsapContext<HTMLHeadingElement>(({ scope }) => {
-    if (prefersReducedMotion()) return;
+    if (prefersReducedMotion() || lang === 'ar') return;
 
     const split = new SplitText(scope, { type: 'chars' });
 
@@ -29,7 +35,7 @@ export function ShatterTitle({
     });
 
     return () => split.revert();
-  });
+  }, [lang]);
 
   return (
     <h1 ref={scope} className={className}>
