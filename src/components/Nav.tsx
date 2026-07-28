@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { Menu, X, Globe } from 'lucide-react';
+import { Menu, X, Languages as LanguagesIcon } from 'lucide-react';
 import { navItems, studio, uiCopy } from '../lib/content';
 import { useLanguage, usePick } from '../lib/language';
 
@@ -95,7 +95,7 @@ export function Nav() {
             }`}
             aria-label="Switch language"
           >
-            <Globe size={18} />
+<LanguagesIcon size={18} />
           </button>
           <Link
             to="/contact"
@@ -149,7 +149,10 @@ export function Nav() {
               className="rounded-full border border-line p-2 text-ink-100"
               aria-label="Switch language"
             >
-              <Globe size={18} />
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <text x="2" y="16" fontSize="12" fontWeight="600" fill="currentColor">A</text>
+                <text x="13" y="16" fontSize="12" fontWeight="600" fill="currentColor">ع</text>
+              </svg>
             </button>
           </div>
         </div>
