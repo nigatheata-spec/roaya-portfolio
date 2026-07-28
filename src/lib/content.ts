@@ -1,14 +1,13 @@
 export const studio = {
   name: 'Roaya',
   arabicName: 'رؤية',
-  tagline: 'Film, documentary, and media production',
+  tagline: 'AI production machine',
   city: 'Riyadh, Saudi Arabia',
-  // TODO: confirm post-rebrand contact details. These carry over from Onoria.
-  email: 'info@onoria.com',
+  // TODO: confirm contact details.
+  email: 'info@roaya.com',
   phone: '+90 537 960 6350',
   vimeo: 'https://vimeo.com/usamaesam',
   founded: 2018,
-  formerly: 'Onoria Solutions',
 };
 
 export interface NavItem {
@@ -38,8 +37,7 @@ export interface Project {
 }
 
 /**
- * Real catalogue carried over from onoria.solutions. Posters were pulled from the
- * old site; summaries are descriptive placeholders pending sign-off.
+ * Real catalogue. Summaries are descriptive placeholders pending sign-off.
  */
 export const projects: Project[] = [
   {
@@ -227,7 +225,7 @@ export interface TimelineEntry {
 export const timeline: TimelineEntry[] = [
   {
     year: '2018',
-    title: 'Founded as Onoria',
+    title: 'Founded',
     body: 'Started as an entertainment and media PR house, taking commercial work alongside the first documentary commissions.',
   },
   {

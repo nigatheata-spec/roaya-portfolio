@@ -138,9 +138,6 @@ export function Contact() {
               <span>
                 <span className="label block">Studio</span>
                 <span className="mt-2 block text-[0.95rem] text-ink-100">{studio.city}</span>
-                <span className="mt-1 block text-sm text-ink-25">
-                  Formerly {studio.formerly}
-                </span>
               </span>
             </div>
 

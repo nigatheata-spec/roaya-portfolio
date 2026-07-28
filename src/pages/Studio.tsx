@@ -125,7 +125,7 @@ export function Studio() {
                 The reel says more than this page does.
               </h2>
               <p className="mt-4 max-w-md text-sm leading-relaxed text-ink-45">
-                Formerly {studio.formerly}. Now working out of {studio.city}.
+                Working out of {studio.city}.
               </p>
             </div>
             <div className="flex shrink-0 flex-wrap gap-3">

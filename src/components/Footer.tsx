@@ -55,7 +55,6 @@ export function Footer() {
               <ul className="space-y-2.5 text-sm text-ink-70">
                 <li>{studio.city}</li>
                 <li>{studio.phone}</li>
-                <li>Formerly {studio.formerly}</li>
               </ul>
             </div>
             <div>
@@ -85,7 +84,7 @@ export function Footer() {
         {studio.name.split('').map((ch, i) => (
           <span
             key={i}
-            className="inline-block font-display text-[clamp(4rem,19vw,17rem)] font-extrabold leading-[0.78] tracking-[-0.06em] text-raised"
+            className="inline-block font-display text-[clamp(4rem,19vw,17rem)] font-extrabold leading-[0.78] tracking-[-0.06em] text-white"
           >
             {ch}
           </span>
