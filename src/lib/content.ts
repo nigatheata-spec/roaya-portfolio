@@ -11,16 +11,21 @@ export const studio = {
 };
 
 export interface NavItem {
-  label: string;
+  label: { en: string; ar: string };
   to: string;
 }
 
 export const navItems: NavItem[] = [
-  { label: 'Work', to: '/work' },
-  { label: 'Services', to: '/services' },
-  { label: 'Studio', to: '/studio' },
-  { label: 'Contact', to: '/contact' },
+  { label: { en: 'Work', ar: 'الأعمال' }, to: '/work' },
+  { label: { en: 'Services', ar: 'الخدمات' }, to: '/services' },
+  { label: { en: 'Studio', ar: 'الاستوديو' }, to: '/studio' },
+  { label: { en: 'Contact', ar: 'تواصل معنا' }, to: '/contact' },
 ];
+
+export const uiCopy = {
+  startProject: { en: 'Start a project', ar: 'ابدأ مشروعاً' },
+  switchLang: { en: 'العربية', ar: 'English' },
+};
 
 export type Discipline = 'Documentary' | 'Drama' | 'Advertising' | 'Promo' | 'VFX';
 
@@ -82,7 +87,7 @@ export const projects: Project[] = [
     discipline: 'Promo',
     summary: {
       en: 'Hyperlapse-driven city promo, the longest promo in the catalogue.',
-      ar: 'برومو مديني معتمد على تقنية الهايبرلابس، الأطول ضمن الكتالوج.',
+      ar: 'برومو لمدينة معتمد على تقنية الهايبرلابس، وهو الأطول ضمن الكتالوج.',
     },
     poster: '/media/work/shjseen-hyperlapses.jpg',
     featured: true,
@@ -95,7 +100,7 @@ export const projects: Project[] = [
     discipline: 'Advertising',
     summary: {
       en: 'Product commercial for a consumer robotics launch.',
-      ar: 'إعلان منتج لإطلاق جهاز روبوتات استهلاكي.',
+      ar: 'إعلان لإطلاق منتج روبوتي موجّه للمستهلك.',
     },
     poster: '/media/work/cbot-robolabs.jpg',
     featured: true,
@@ -107,7 +112,7 @@ export const projects: Project[] = [
     discipline: 'Advertising',
     summary: {
       en: 'Corporate film for a renewable energy operator.',
-      ar: 'فيلم مؤسسي لشركة تشغّل حلول الطاقة المتجددة.',
+      ar: 'فيلم مؤسسي لشركة عاملة في مجال الطاقة المتجددة.',
     },
     poster: '/media/work/altar-solar.jpg',
     featured: true,
@@ -202,7 +207,7 @@ export const services: Service[] = [
     title: { en: 'Documentary', ar: 'الأفلام الوثائقية' },
     description: {
       en: 'Long and short-form documentary, from research and access through to final delivery. The bulk of our catalogue sits here.',
-      ar: 'أفلام وثائقية طويلة وقصيرة، من البحث والوصول إلى التسليم النهائي. الجزء الأكبر من أعمالنا يقع هنا.',
+      ar: 'أفلام وثائقية طويلة وقصيرة، من البحث والوصول حتى التسليم النهائي. الجزء الأكبر من أعمالنا يندرج هنا.',
     },
     deliverables: [
       { en: 'Research', ar: 'البحث' },
@@ -287,21 +292,21 @@ export const principles: { title: Bi; body: Bi }[] = [
     title: { en: 'We take the difficult briefs', ar: 'نتولى التكليفات الصعبة' },
     body: {
       en: 'A large part of the catalogue is reporting that took access, patience, and a tolerance for subjects other studios turn down.',
-      ar: 'جزء كبير من أعمالنا هو تقارير تطلّبت وصولاً وصبراً وقدرة على تناول مواضيع ترفضها استوديوهات أخرى.',
+      ar: 'جزء كبير من أعمالنا تقارير تطلّبت وصولاً غير متاح للجميع، وصبراً طويلاً، وقدرة على تناول مواضيع ترفضها استوديوهات أخرى.',
     },
   },
   {
-    title: { en: 'The edit is where it is won', ar: 'المونتاج هو حيث يُحسم العمل' },
+    title: { en: 'The edit is where it is won', ar: 'في المونتاج يُحسم العمل' },
     body: {
       en: 'Several of these films run past twenty minutes. That length only holds if post is budgeted like production, not after it.',
-      ar: 'العديد من هذه الأفلام يتجاوز العشرين دقيقة. هذا الطول لا يصمد إلا إذا خُصصت له ميزانية ما بعد الإنتاج كالإنتاج نفسه، لا كإضافة لاحقة.',
+      ar: 'كثير من هذه الأفلام يتجاوز العشرين دقيقة، وهذا الطول لا يصمد إلا إذا خُصصت لمرحلة ما بعد الإنتاج ميزانية كالإنتاج نفسه، لا كإضافة لاحقة.',
     },
   },
   {
     title: { en: 'One team, start to finish', ar: 'فريق واحد من البداية إلى النهاية' },
     body: {
       en: 'Research, shoot, VFX, and grade sit under one roof, so nothing is lost in a handover.',
-      ar: 'البحث والتصوير والمؤثرات البصرية وتصحيح الألوان كلها تحت سقف واحد، فلا يضيع شيء عند التسليم بين الفرق.',
+      ar: 'البحث والتصوير والمؤثرات البصرية وتصحيح الألوان كلها تحت سقف واحد، فلا يضيع شيء في التنقل بين الفرق.',
     },
   },
 ];

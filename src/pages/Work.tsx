@@ -8,11 +8,11 @@ import { gsap, useGsapContext } from '../lib/gsap';
 import { usePick } from '../lib/language';
 
 const COPY = {
-  eyebrow: { en: 'Catalogue', ar: 'الأعمال' },
+  eyebrow: { en: 'Catalogue', ar: 'الكتالوج' },
   title: { en: 'Work', ar: 'الأعمال' },
   intro: {
     en: 'Documentary, drama, advertising, and broadcast promos. Long-form reporting sits alongside commercial work, and both are finished in the same room.',
-    ar: 'أفلام وثائقية ودراما وإعلانات وبرومو تلفزيوني. التقارير الطويلة تقف جنباً إلى جنب مع الأعمال التجارية، وكلاهما يُنجز في نفس الاستوديو.',
+    ar: 'أفلام وثائقية ودراما وإعلانات وبرومو تلفزيوني. الأعمال الطويلة تقف جنباً إلى جنب مع الأعمال التجارية، وكلاهما يُنجز في الاستوديو نفسه.',
   },
   archiveTitle: {
     en: 'The full archive runs well past what is shown here.',
@@ -20,7 +20,7 @@ const COPY = {
   },
   archiveBody: {
     en: 'Ask us for reels cut to a specific brief, a region, or a format.',
-    ar: 'اطلب منا مقاطع مجهّزة بحسب طلب محدد، أو منطقة، أو صيغة معينة.',
+    ar: 'اطلب منا مقاطع مُجهّزة وفق متطلب محدد، أو منطقة، أو صيغة بعينها.',
   },
   requestReel: { en: 'Request a reel', ar: 'اطلب مقطعاً' },
 };

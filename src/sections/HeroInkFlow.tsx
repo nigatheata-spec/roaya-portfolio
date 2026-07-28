@@ -11,7 +11,7 @@ const COPY = {
   h1: { en: 'We stay with the story', ar: 'نبقى مع القصة' },
   intro: {
     en: 'Roaya is a film studio working across documentary, drama, and advertising. Long-form reporting, commercial work, and everything finished in house.',
-    ar: 'رؤية استوديو أفلام يعمل في الوثائقي والدراما والإعلانات. تقارير طويلة، وأعمال تجارية، وكل شيء يُنجز داخلياً.',
+    ar: 'رؤية استوديو أفلام يعمل في مجالات الأفلام الوثائقية والدراما والإعلان. أعمال طويلة، ومشاريع تجارية، وكل شيء يُنجز داخلياً.',
   },
   selectedWork: { en: 'Selected work', ar: 'أعمال مختارة' },
 };

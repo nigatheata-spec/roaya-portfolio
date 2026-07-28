@@ -104,7 +104,9 @@ export function Studio() {
           <span className="inline-block h-px w-8 bg-brulee" />
           {pick(COPY.eyebrow)}
         </p>
-        <h1 className="text-mega font-extrabold">Roaya</h1>
+        <h1 className="text-mega font-extrabold">
+          {lang === 'ar' ? studio.arabicName : studio.name}
+        </h1>
 
         <p className="mt-12 min-h-[5.5rem] max-w-3xl font-display text-[clamp(1.3rem,3vw,2.4rem)] font-medium leading-[1.2] tracking-[-0.03em] text-ink-100 sm:min-h-[7rem]">
           <span ref={typed} />

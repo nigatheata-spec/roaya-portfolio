@@ -143,6 +143,15 @@
     direction: ltr;
   }
 
+  /*
+   * Arabic text in chrome that stays LTR (nav, footer). Tracking has to be
+   * cleared here too, since .label applies 0.18em and that breaks Arabic joins.
+   */
+  .font-arabic-ui {
+    font-family: var(--font-arabic-body);
+    letter-spacing: 0;
+  }
+
   ::selection {
     background: var(--color-brulee);
     color: var(--color-void);

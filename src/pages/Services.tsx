@@ -44,12 +44,12 @@ const COPY = {
   title: { en: 'Services', ar: 'الخدمات' },
   intro: {
     en: 'Six disciplines, one team. Most projects use more than one of them, which is the point of keeping them in the same building.',
-    ar: 'ست تخصصات، فريق واحد. معظم المشاريع تستخدم أكثر من واحد منها، وهذا هو الهدف من إبقائها تحت سقف واحد.',
+    ar: 'ستة تخصصات، وفريق واحد. معظم المشاريع تستعين بأكثر من تخصص، وهذا بالضبط سبب إبقائها تحت سقف واحد.',
   },
   processLabel: { en: 'How a project runs', ar: 'كيف يسير المشروع' },
   ctaTitle: {
     en: 'Not sure which of these you need? That is usually the first conversation.',
-    ar: 'لست متأكداً من الخدمة التي تحتاجها؟ عادة ما تكون هذه أول محادثة.',
+    ar: 'لست متأكداً أي هذه الخدمات تحتاج؟ عادةً ما تبدأ من هنا أول محادثة بيننا.',
   },
   talkToUs: { en: 'Talk to us', ar: 'تحدث معنا' },
 };

@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
-import { navItems, studio } from '../lib/content';
-import { useLanguage } from '../lib/language';
+import { navItems, studio, uiCopy } from '../lib/content';
+import { useLanguage, usePick } from '../lib/language';
 
 /** Routes whose first section sits on a cream surface, so the nav must invert. */
 const LIGHT_TOP_ROUTES = ['/services'];
@@ -12,6 +12,11 @@ export function Nav() {
   const [open, setOpen] = useState(false);
   const location = useLocation();
   const { lang, toggle } = useLanguage();
+  const pick = usePick();
+
+  // Labels translate, but the bar keeps its LTR layout so the logo stays left
+  // and the CTA stays right in both languages.
+  const arText = lang === 'ar' ? 'font-arabic-ui' : '';
 
   // Only while pinned over the light hero; once scrolled the bar gets its own dark fill.
   const onLight = LIGHT_TOP_ROUTES.includes(location.pathname) && !scrolled && !open;
@@ -67,14 +72,14 @@ export function Nav() {
               key={item.to}
               to={item.to}
               className={({ isActive }) =>
-                `label transition-colors duration-300 ${
+                `label transition-colors duration-300 ${arText} ${
                   onLight
                     ? 'text-on-cream-soft hover:text-on-cream'
                     : 'hover:text-ink-100'
                 } ${isActive ? '!text-brulee' : ''}`
               }
             >
-              {item.label}
+              {pick(item.label)}
             </NavLink>
           ))}
         </nav>
@@ -84,13 +89,15 @@ export function Nav() {
             type="button"
             onClick={toggle}
             className={`label rounded-full border px-3 py-1.5 transition-colors duration-300 ${
+              lang === 'en' ? 'font-arabic-ui' : ''
+            } ${
               onLight
                 ? 'border-on-cream/30 text-on-cream hover:border-brulee'
                 : 'border-line text-ink-100 hover:border-brulee'
             }`}
             aria-label="Switch language"
           >
-            {lang === 'en' ? 'العربية' : 'English'}
+            {pick(uiCopy.switchLang)}
           </button>
           <Link
             to="/contact"
@@ -99,8 +106,10 @@ export function Nav() {
             }`}
           >
             <span className="absolute inset-0 -translate-y-full bg-brulee transition-transform duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0" />
-            <span className="relative transition-colors duration-300 group-hover:text-on-cream">
-              Start a project
+            <span
+              className={`relative transition-colors duration-300 group-hover:text-on-cream ${arText}`}
+            >
+              {pick(uiCopy.startProject)}
             </span>
           </Link>
         </div>
@@ -122,24 +131,28 @@ export function Nav() {
             <NavLink
               key={item.to}
               to={item.to}
-              className="font-display text-3xl font-bold text-ink-100"
+              className={`text-3xl font-bold text-ink-100 ${
+                lang === 'ar' ? 'font-arabic-ui' : 'font-display'
+              }`}
             >
-              {item.label}
+              {pick(item.label)}
             </NavLink>
           ))}
           <div className="mt-4 flex items-center gap-3">
             <Link
               to="/contact"
-              className="inline-flex w-fit rounded-full bg-brulee px-5 py-2.5 text-sm font-medium text-void"
+              className={`inline-flex w-fit rounded-full bg-brulee px-5 py-2.5 text-sm font-medium text-void ${arText}`}
             >
-              Start a project
+              {pick(uiCopy.startProject)}
             </Link>
             <button
               type="button"
               onClick={toggle}
-              className="label rounded-full border border-line px-4 py-2.5 text-ink-100"
+              className={`label rounded-full border border-line px-4 py-2.5 text-ink-100 ${
+                lang === 'en' ? 'font-arabic-ui' : ''
+              }`}
             >
-              {lang === 'en' ? 'العربية' : 'English'}
+              {pick(uiCopy.switchLang)}
             </button>
           </div>
         </div>

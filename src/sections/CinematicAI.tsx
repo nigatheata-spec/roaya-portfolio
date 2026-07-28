@@ -10,7 +10,7 @@ const COPY = {
   },
   body: {
     en: 'Most AI video reads as AI video — flat motion, no camera logic, nothing a cinematographer would sign off on. We direct it the way we direct a shoot: tracking, handheld, reveals, blocking. The output holds up next to footage we captured on location.',
-    ar: 'معظم فيديوهات الذكاء الاصطناعي تبدو كما هي — حركة مسطحة، بلا منطق كاميرا، ولا شيء يوافق عليه مدير تصوير. نحن نخرجها كما نخرج التصوير الحقيقي: تتبع، كاميرا محمولة، كشف تدريجي، وتوزيع المشهد. والنتيجة تصمد إلى جانب ما صوّرناه في المواقع.',
+    ar: 'معظم مقاطع الذكاء الاصطناعي تُكشف من النظرة الأولى: حركة مسطّحة، وكاميرا بلا منطق، ولا شيء يوافق عليه مدير تصوير. نحن نُخرجها كما نُخرج أي تصوير حقيقي: حركة تتبّع، وكاميرا محمولة، ولقطات كشف، وتوزيع محسوب داخل الكادر. والنتيجة تصمد إلى جانب ما نصوّره في المواقع.',
   },
 };
 

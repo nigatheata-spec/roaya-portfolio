@@ -3,7 +3,7 @@ import { usePick, useLanguage } from '../lib/language';
 
 const STATEMENT = {
   en: 'Most of what we make takes longer than anyone expected. Access has to be earned, archive has to be found, and the edit is what decides whether any of it was worth doing.',
-  ar: 'معظم ما ننتجه يستغرق وقتاً أطول مما يتوقعه أي أحد. الوصول يجب أن يُكتسب، والأرشيف يجب أن يُوجد، والمونتاج هو ما يحدد إن كان كل ذلك يستحق العناء.',
+  ar: 'معظم ما ننتجه يستغرق وقتاً أطول مما يتوقعه أحد. الوصول يُكتسب، والأرشيف يُبحث عنه طويلاً، وفي المونتاج وحده يتحدد إن كان كل ذلك يستحق العناء.',
 };
 
 const LABEL = { en: 'Position', ar: 'موقفنا' };

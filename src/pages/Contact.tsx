@@ -15,7 +15,7 @@ const ROUTES = [
 
 const COPY = {
   eyebrow: { en: 'Contact', ar: 'تواصل معنا' },
-  title: { en: 'Say hello', ar: 'تواصل معنا' },
+  title: { en: 'Say hello', ar: 'لنبدأ الحديث' },
   intro: {
     en: 'Tell us the subject, the deadline, and what you already have. If it is a documentary, tell us who has agreed to talk.',
     ar: 'أخبرنا بالموضوع، والموعد النهائي، وما هو متوفر لديك بالفعل. إن كان فيلماً وثائقياً، أخبرنا من وافق على الحديث.',

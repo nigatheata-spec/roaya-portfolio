@@ -44,7 +44,7 @@ export function Footer() {
                       to={item.to}
                       className="text-sm text-ink-70 transition-colors hover:text-ink-100"
                     >
-                      {item.label}
+                      {item.label.en}
                     </Link>
                   </li>
                 ))}
