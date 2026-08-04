@@ -6,17 +6,11 @@ const COPY = {
   title: { en: 'Drag to explore', ar: 'اسحب للاستكشاف' },
 };
 
-const images = [
-  { id: 1, alt: 'Al-Warsha', src: '/media/work/al-warsha.jpg' },
-  { id: 2, alt: 'Discovering Alrihla — Al Jazeera', src: '/media/work/alrihla-world-cup.jpg' },
-  { id: 3, alt: 'Altar Solar Energy', src: '/media/work/altar-solar.jpg' },
-  { id: 4, alt: 'CBot — Robolabs', src: '/media/work/cbot-robolabs.jpg' },
-  { id: 6, alt: 'LEGO Bridge — VFX', src: '/media/work/lego-vfx-bridge.jpg' },
-  { id: 7, alt: 'Minimalism promo', src: '/media/work/promo-minimalism.jpg' },
-  { id: 8, alt: 'Rekaz', src: '/media/work/rekaz.jpg' },
-  { id: 9, alt: 'ShjSeen Hyperlapses', src: '/media/work/shjseen-hyperlapses.jpg' },
-  { id: 10, alt: 'Generation Imagination — Total Yogurt', src: '/media/work/total-yogurt.jpg' },
-];
+const images = Array.from({ length: 23 }, (_, i) => ({
+  id: i + 1,
+  alt: `Archive frame ${i + 1}`,
+  src: `/media/work/gallery-${i + 1}.jpg`,
+}));
 
 export function DragGallery() {
   const pick = usePick();
