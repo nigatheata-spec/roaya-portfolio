@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowUpRight } from 'lucide-react';
 import { principles, timeline, studio } from '../lib/content';
 import { gsap, useGsapContext, prefersReducedMotion } from '../lib/gsap';
 import { usePick, useLanguage } from '../lib/language';
@@ -32,7 +31,6 @@ const COPY = {
     ar: 'المقطع يقول أكثر مما تقوله هذه الصفحة.',
   },
   workingOutOf: { en: 'Working out of', ar: 'نعمل انطلاقاً من' },
-  vimeo: { en: 'Vimeo', ar: 'فيميو' },
   getInTouch: { en: 'Get in touch', ar: 'تواصل معنا' },
 };
 
@@ -163,18 +161,6 @@ export function Studio() {
               </p>
             </div>
             <div className="flex shrink-0 flex-wrap gap-3">
-              <a
-                href={studio.vimeo}
-                target="_blank"
-                rel="noreferrer noopener"
-                className="group inline-flex items-center gap-2 rounded-full border border-line px-6 py-3 text-sm font-medium text-ink-100 transition-colors hover:border-brulee"
-              >
-                {pick(COPY.vimeo)}
-                <ArrowUpRight
-                  size={15}
-                  className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                />
-              </a>
               <Link
                 to="/contact"
                 className="inline-flex items-center rounded-full bg-cream px-6 py-3 text-sm font-medium text-on-cream transition-colors hover:bg-brulee"

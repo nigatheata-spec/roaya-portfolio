@@ -71,6 +71,7 @@ export function Nav() {
             <NavLink
               key={item.to}
               to={item.to}
+              end={item.to === '/'}
               className={({ isActive }) =>
                 `label transition-colors duration-300 ${arText} ${
                   onLight

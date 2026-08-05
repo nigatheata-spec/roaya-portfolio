@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { ArrowDown } from 'lucide-react';
-import { Media } from '../components/Media';
+import { HeroGalleryBg } from '../components/HeroGalleryBg';
 import { gsap, useGsapContext, prefersReducedMotion } from '../lib/gsap';
 import { usePick, useLanguage } from '../lib/language';
 
@@ -10,11 +10,11 @@ const LINES = {
 };
 
 const COPY = {
-  label: { en: 'Media house — Riyadh', ar: 'بيت إعلامي — الرياض' },
+  label: { en: 'AI content studio — Riyadh', ar: 'استوديو محتوى ذكاء اصطناعي — الرياض' },
   h1: { en: 'We stay with the story', ar: 'نبقى مع القصة' },
   intro: {
-    en: 'Roaya is a film studio working across documentary, drama, and advertising. Long-form reporting, commercial work, and everything finished in house.',
-    ar: 'رؤية استوديو أفلام يعمل في مجالات الأفلام الوثائقية والدراما والإعلان. أعمال طويلة، ومشاريع تجارية، وكل شيء يُنجز داخلياً.',
+    en: 'Roaya is an AI production machine. We generate, direct, and finish AI footage to broadcast standard—documentary, drama, advertising, and cinematic work built entirely in software.',
+    ar: 'رؤية منظومة إنتاج بالذكاء الاصطناعي. نولّد ونُخرج وننجز لقطات ذكاء اصطناعي بمعايير البث—أفلام وثائقية ودراما وإعلانات وأعمال سينمائية مبنية بالكامل في البرمجيات.',
   },
   selectedWork: { en: 'Selected work', ar: 'أعمال مختارة' },
 };
@@ -94,15 +94,9 @@ export function HeroInkFlow() {
       className="relative flex min-h-svh flex-col justify-between overflow-hidden pb-10 pt-32"
     >
       <div data-hero-bg className="absolute inset-0">
-        <Media
-          src="/media/hero/showreel-poster.jpg"
-          video="/media/hero/showreel.mp4"
-          alt="Roaya showreel"
-          aspect="auto"
-          caption="Showreel — 16:9"
-          className="h-full w-full rounded-none opacity-30"
-          priority
-        />
+        <div className="absolute inset-0">
+          <HeroGalleryBg />
+        </div>
         <div className="absolute inset-0 bg-gradient-to-b from-void via-void/70 to-void" />
         <div className="absolute inset-0 bg-gradient-to-r from-void via-transparent to-void/60" />
       </div>

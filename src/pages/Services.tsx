@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
-import { services } from '../lib/content';
-import { gsap, useGsapContext, prefersReducedMotion } from '../lib/gsap';
 import { usePick } from '../lib/language';
+import { ServicesReconfig } from '../sections/ServicesReconfig';
 
 const PROCESS = [
   {
@@ -56,36 +55,9 @@ const COPY = {
 
 export function Services() {
   const pick = usePick();
-  const scope = useGsapContext<HTMLDivElement>(({ scope }) => {
-    if (prefersReducedMotion()) return;
-
-    const panels = gsap.utils.toArray<HTMLElement>('[data-panel]', scope);
-
-    panels.forEach((panel) => {
-      gsap.fromTo(
-        panel,
-        { rotateX: -92, opacity: 0 },
-        {
-          rotateX: 0,
-          opacity: 1,
-          duration: 0.9,
-          ease: 'power4.out',
-          scrollTrigger: { trigger: panel, start: 'top 88%' },
-        },
-      );
-    });
-
-    gsap.from('[data-services-head] > *', {
-      y: 26,
-      opacity: 0,
-      duration: 0.9,
-      ease: 'power3.out',
-      stagger: 0.1,
-    });
-  });
 
   return (
-    <div ref={scope}>
+    <div>
       <section className="bg-cream pb-20 pt-40">
         <div data-services-head className="shell">
           <p className="label mb-8 flex items-center gap-3 text-on-cream-soft">
@@ -99,44 +71,7 @@ export function Services() {
         </div>
       </section>
 
-      <section className="bg-cream pb-28">
-        <div className="shell" style={{ perspective: '1400px' }}>
-          <div className="space-y-3">
-            {services.map((s) => (
-              <article
-                key={s.index}
-                data-panel
-                className="origin-top rounded-2xl border border-on-cream/12 bg-cream-deep p-8 shadow-[0_8px_28px_-12px_rgba(0,0,0,0.35)] md:p-10"
-                style={{ transformStyle: 'preserve-3d' }}
-              >
-                <div className="flex flex-col gap-6 md:flex-row md:items-start md:gap-12">
-                  <span className="font-display text-4xl font-extrabold leading-none tracking-tight text-brulee md:w-24">
-                    {s.index}
-                  </span>
-                  <div className="md:flex-1">
-                    <h2 className="text-[1.6rem] font-bold tracking-[-0.03em] text-on-cream">
-                      {pick(s.title)}
-                    </h2>
-                    <p className="mt-3 max-w-2xl text-sm leading-relaxed text-on-cream-soft">
-                      {pick(s.description)}
-                    </p>
-                  </div>
-                  <ul className="flex flex-wrap gap-2 md:w-64 md:shrink-0">
-                    {s.deliverables.map((d) => (
-                      <li
-                        key={d.en}
-                        className="rounded-full border border-on-cream/20 px-3 py-1 text-xs text-on-cream-soft"
-                      >
-                        {pick(d)}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ServicesReconfig />
 
       <section className="py-28">
         <div className="shell">

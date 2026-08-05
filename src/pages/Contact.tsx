@@ -23,7 +23,6 @@ const COPY = {
   email: { en: 'Email', ar: 'البريد الإلكتروني' },
   phone: { en: 'Phone', ar: 'الهاتف' },
   studio: { en: 'Studio', ar: 'الاستوديو' },
-  watchReel: { en: 'Watch the reel on Vimeo', ar: 'شاهد المقطع على فيميو' },
   name: { en: 'Name', ar: 'الاسم' },
   namePlaceholder: { en: 'Your name', ar: 'اسمك' },
   company: { en: 'Company', ar: 'الشركة' },
@@ -156,7 +155,10 @@ export function Contact() {
               <Phone size={17} className="mt-1 shrink-0 text-brulee" />
               <span>
                 <span className="label block">{pick(COPY.phone)}</span>
-                <span className="mt-2 block text-[0.95rem] text-ink-100 transition-colors group-hover:text-brulee">
+                <span
+                  dir="ltr"
+                  className="mt-2 block w-fit text-[0.95rem] text-ink-100 transition-colors group-hover:text-brulee"
+                >
                   {studio.phone}
                 </span>
               </span>
@@ -169,19 +171,6 @@ export function Contact() {
                 <span className="mt-2 block text-[0.95rem] text-ink-100">{studio.city}</span>
               </span>
             </div>
-
-            <a
-              href={studio.vimeo}
-              target="_blank"
-              rel="noreferrer noopener"
-              className="group flex items-center gap-2 border-t border-line-soft/70 pt-6 text-[0.95rem] text-ink-70 transition-colors hover:text-brulee"
-            >
-              {pick(COPY.watchReel)}
-              <ArrowUpRight
-                size={15}
-                className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-              />
-            </a>
           </div>
 
           <form

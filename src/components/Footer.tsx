@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
 import { navItems, studio } from '../lib/content';
-import { gsap, useGsapContext } from '../lib/gsap';
 import { useLanguage, usePick } from '../lib/language';
 
 const COPY = {
@@ -20,18 +19,8 @@ export function Footer() {
   // only the text is localised.
   const arText = lang === 'ar' ? 'font-arabic-ui' : '';
 
-  const scope = useGsapContext<HTMLElement>(() => {
-    gsap.from('[data-footer-mark] span', {
-      yPercent: 115,
-      duration: 1.1,
-      ease: 'power4.out',
-      stagger: 0.05,
-      scrollTrigger: { trigger: '[data-footer-mark]', start: 'top 92%' },
-    });
-  });
-
   return (
-    <footer ref={scope} className="relative border-t border-line-soft/70 bg-black pt-20">
+    <footer className="relative border-t border-line-soft/70 bg-black pt-20">
       <div className="shell">
         <div className="flex flex-col gap-12 pb-16 md:flex-row md:justify-between">
           <div className="max-w-sm">
@@ -82,7 +71,7 @@ export function Footer() {
             <div>
               <p className={`label mb-4 ${arText}`}>{pick(COPY.social)}</p>
               <ul className="space-y-2.5">
-                {['Instagram', 'Vimeo', 'LinkedIn'].map((s) => (
+                {['Instagram', 'LinkedIn'].map((s) => (
                   <li key={s}>
                     <a
                       href="#"
@@ -96,21 +85,6 @@ export function Footer() {
             </div>
           </div>
         </div>
-      </div>
-
-      <div
-        data-footer-mark
-        className="shell flex justify-between overflow-hidden pb-6"
-        aria-hidden="true"
-      >
-        {studio.name.split('').map((ch, i) => (
-          <span
-            key={i}
-            className="inline-block font-display text-[clamp(4rem,19vw,17rem)] font-extrabold leading-[0.78] tracking-[-0.06em] text-white"
-          >
-            {ch}
-          </span>
-        ))}
       </div>
 
       <div

@@ -5,8 +5,7 @@ export const studio = {
   city: 'Riyadh, Saudi Arabia',
   // TODO: confirm contact details.
   email: 'info@roaya.com',
-  phone: '+90 537 960 6350',
-  vimeo: 'https://vimeo.com/usamaesam',
+  phone: '+966 56 132 3381',
   founded: 2018,
 };
 
@@ -16,6 +15,7 @@ export interface NavItem {
 }
 
 export const navItems: NavItem[] = [
+  { label: { en: 'Home', ar: 'الرئيسية' }, to: '/' },
   { label: { en: 'Work', ar: 'الأعمال' }, to: '/work' },
   { label: { en: 'Services', ar: 'الخدمات' }, to: '/services' },
   { label: { en: 'Studio', ar: 'الاستوديو' }, to: '/studio' },
@@ -23,7 +23,7 @@ export const navItems: NavItem[] = [
 ];
 
 export const uiCopy = {
-  startProject: { en: 'Start a project', ar: 'ابدأ مشروعاً' },
+  startProject: { en: 'Contact us', ar: 'تواصل معنا' },
   switchLang: { en: 'العربية', ar: 'English' },
 };
 

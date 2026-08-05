@@ -1,16 +1,11 @@
 import { GridBody, DraggableContainer, GridItem } from '../components/ui/infinite-drag-scroll';
 import { usePick } from '../lib/language';
+import { galleryImages as images } from '../lib/gallery';
 
 const COPY = {
   label: { en: 'Archive', ar: 'الأرشيف' },
   title: { en: 'Drag to explore', ar: 'اسحب للاستكشاف' },
 };
-
-const images = Array.from({ length: 23 }, (_, i) => ({
-  id: i + 1,
-  alt: `Archive frame ${i + 1}`,
-  src: `/media/work/gallery-${i + 1}.jpg`,
-}));
 
 export function DragGallery() {
   const pick = usePick();
@@ -34,11 +29,11 @@ export function DragGallery() {
           <DraggableContainer variant="masonry">
             <GridBody>
               {images.map((image) => (
-                <GridItem key={image.id} className="relative h-40 w-28 md:h-64 md:w-44">
+                <GridItem key={image.id} className="relative h-auto w-28 self-start md:w-44">
                   <img
                     src={image.src}
                     alt={image.alt}
-                    className="pointer-events-none absolute h-full w-full object-cover"
+                    className="pointer-events-none block h-auto w-full"
                   />
                 </GridItem>
               ))}
