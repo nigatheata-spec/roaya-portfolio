@@ -1,17 +1,49 @@
 @import 'tailwindcss';
 
 @font-face {
-  font-family: 'Milea Serif';
-  src: url('/fonts/Milea-Serif.otf') format('opentype');
+  font-family: 'Cairo';
+  src: url('/fonts/Cairo-ExtraLight.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cairo';
+  src: url('/fonts/Cairo-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cairo';
+  src: url('/fonts/Cairo-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Arabic Display';
-  src: url('/fonts/Arabic-Display.ttf') format('truetype');
-  font-weight: 400;
+  font-family: 'Cairo';
+  src: url('/fonts/Cairo-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cairo';
+  src: url('/fonts/Cairo-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cairo';
+  src: url('/fonts/Cairo-Black.ttf') format('truetype');
+  font-weight: 900;
   font-style: normal;
   font-display: swap;
 }
@@ -52,11 +84,10 @@
   /* Teal accent, in the Eclipse family but bright enough to read as a line on dark. */
   --color-teal: oklch(0.62 0.07 195);
 
-  --font-display: 'Milea Serif', 'Bricolage Grotesque', 'Helvetica Neue', serif;
-  --font-body: 'Sora', system-ui, sans-serif;
-  /* Display face for Arabic headings; body copy uses a readable UI Arabic stack. */
-  --font-arabic: 'Arabic Display', 'Tahoma', sans-serif;
-  --font-arabic-body: 'Tahoma', 'Segoe UI', 'Noto Sans Arabic', system-ui, sans-serif;
+  --font-display: 'Cairo', 'Helvetica Neue', sans-serif;
+  --font-body: 'Cairo', system-ui, sans-serif;
+  --font-arabic: 'Cairo', 'Tahoma', sans-serif;
+  --font-arabic-body: 'Cairo', 'Tahoma', 'Segoe UI', system-ui, sans-serif;
 }
 
 @layer base {

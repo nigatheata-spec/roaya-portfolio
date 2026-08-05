@@ -172,11 +172,7 @@ export function HeroInkFlow() {
                 key={line}
                 x="0"
                 y={lang === 'ar' ? 150 + i * 165 : 114 + i * 134}
-                fontFamily={
-                  lang === 'ar'
-                    ? 'Arabic Display, Tahoma, sans-serif'
-                    : 'Milea Serif, Bricolage Grotesque, serif'
-                }
+                fontFamily="Cairo, Tahoma, sans-serif"
                 fontWeight="800"
                 fontSize={lang === 'ar' ? 128 : 138}
                 /* Negative tracking breaks Arabic letter joining. */

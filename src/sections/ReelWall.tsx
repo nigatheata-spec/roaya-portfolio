@@ -13,7 +13,6 @@ const COPY = {
 
 /** Landscape-framed pieces. */
 const WIDE = [
-  { id: '1213542850', title: 'Reel excerpt' },
   { id: '1213541580', title: 'Long-form excerpt' },
   { id: '1213539687', title: 'Feature excerpt' },
   { id: '1213694218', title: 'Reel excerpt' },
