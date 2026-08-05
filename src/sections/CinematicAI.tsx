@@ -1,4 +1,4 @@
-import { VimeoClip } from '../components/VimeoClip';
+import { BgVideo } from '../components/BgVideo';
 import { gsap, useGsapContext, prefersReducedMotion } from '../lib/gsap';
 import { usePick } from '../lib/language';
 
@@ -15,12 +15,12 @@ const COPY = {
 };
 
 const CLIPS = [
-  { id: '1213406495', title: 'Tracking shot — AI-generated' },
-  { id: '1213406541', title: 'Reveal shot — AI-generated' },
-  { id: '1213406567', title: 'Handheld shot — AI-generated' },
-  { id: '1213406494', title: 'Camera tracking — AI-generated' },
-  { id: '1213406492', title: 'Composited plate — AI-generated' },
-  { id: '1213406493', title: 'Extended plate — AI-generated' },
+  { name: 'tracking', title: 'Tracking shot — AI-generated' },
+  { name: 'reveal', title: 'Reveal shot — AI-generated' },
+  { name: 'handheld', title: 'Handheld shot — AI-generated' },
+  { name: 'camera-tracking', title: 'Camera tracking — AI-generated' },
+  { name: 'composited', title: 'Composited plate — AI-generated' },
+  { name: 'extended', title: 'Extended plate — AI-generated' },
 ];
 
 /**
@@ -64,12 +64,12 @@ export function CinematicAI() {
 
         <div dir="ltr" data-cai-grid className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {CLIPS.map((clip) => (
-            <div key={clip.id} data-cai-clip>
-              <VimeoClip
-                id={clip.id}
+            <div key={clip.name} data-cai-clip>
+              <BgVideo
+                src={`/media/ai/${clip.name}.mp4`}
+                poster={`/media/ai/${clip.name}.jpg`}
                 title={clip.title}
                 aspect="4 / 3"
-                videoAspect="16 / 9"
                 className="rounded-2xl"
               />
             </div>

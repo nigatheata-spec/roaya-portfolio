@@ -1,4 +1,4 @@
-import { VimeoClip } from '../components/VimeoClip';
+import { BgVideo } from '../components/BgVideo';
 import { gsap, useGsapContext, prefersReducedMotion } from '../lib/gsap';
 import { usePick } from '../lib/language';
 
@@ -13,20 +13,20 @@ const COPY = {
 
 /** Landscape-framed pieces. */
 const WIDE = [
-  { id: '1213541580', title: 'Long-form excerpt' },
-  { id: '1213539687', title: 'Feature excerpt' },
-  { id: '1213694218', title: 'Reel excerpt' },
-  { id: '1213694220', title: 'Reel excerpt' },
-  { id: '1213694221', title: 'Reel excerpt' },
-  { id: '1213694219', title: 'Reel excerpt' },
+  { name: 'wide-1', title: 'Reel excerpt' },
+  { name: 'wide-2', title: 'Reel excerpt' },
+  { name: 'wide-3', title: 'Reel excerpt' },
+  { name: 'wide-4', title: 'Reel excerpt' },
+  { name: 'wide-5', title: 'Reel excerpt' },
+  { name: 'wide-6', title: 'Reel excerpt' },
 ];
 
 /** Vertical pieces, cut for social and mobile-first delivery. */
 const VERTICAL = [
-  { id: '1213539779', title: 'Vertical cut' },
-  { id: '1213539685', title: 'Vertical cut' },
-  { id: '1213539750', title: 'Vertical cut' },
-  { id: '1213539686', title: 'Vertical cut' },
+  { name: 'vert-1', title: 'Vertical cut' },
+  { name: 'vert-2', title: 'Vertical cut' },
+  { name: 'vert-3', title: 'Vertical cut' },
+  { name: 'vert-4', title: 'Vertical cut' },
 ];
 
 /**
@@ -80,15 +80,15 @@ export function ReelWall() {
         <div dir="ltr" data-reel-wide-grid className="grid gap-3 md:grid-cols-2">
           {WIDE.map((clip, i) => (
             <div
-              key={clip.id}
+              key={clip.name}
               data-reel-wide
               className={i === 0 ? 'md:col-span-2' : ''}
             >
-              <VimeoClip
-                id={clip.id}
+              <BgVideo
+                src={`/media/reel/${clip.name}.mp4`}
+                poster={`/media/reel/${clip.name}.jpg`}
                 title={clip.title}
                 aspect={i === 0 ? '21 / 9' : '16 / 9'}
-                videoAspect="16 / 9"
               />
             </div>
           ))}
@@ -100,12 +100,12 @@ export function ReelWall() {
           className="mt-3 grid grid-cols-2 gap-3 md:grid-cols-4"
         >
           {VERTICAL.map((clip) => (
-            <div key={clip.id} data-reel-vert>
-              <VimeoClip
-                id={clip.id}
+            <div key={clip.name} data-reel-vert>
+              <BgVideo
+                src={`/media/reel/${clip.name}.mp4`}
+                poster={`/media/reel/${clip.name}.jpg`}
                 title={clip.title}
                 aspect="9 / 16"
-                videoAspect="9 / 16"
               />
             </div>
           ))}
