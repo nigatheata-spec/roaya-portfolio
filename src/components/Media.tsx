@@ -51,7 +51,7 @@ export function Media({
   return (
     <div
       ref={rootRef}
-      className={`relative overflow-hidden rounded-2xl bg-surface grain ${className}`}
+      className={`relative overflow-hidden rounded-2xl bg-surface ${className}`}
       style={{ aspectRatio: aspect }}
     >
       {!failed && video ? (

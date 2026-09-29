@@ -46,6 +46,7 @@ export const DraggableContainer = ({
   variant?: variants;
 }) => {
   const ref = useRef<HTMLDivElement | null>(null);
+  const outerRef = useRef<HTMLDivElement | null>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
@@ -80,18 +81,19 @@ export const DraggableContainer = ({
       }
     };
 
-    window.addEventListener("wheel", handleWheelScroll);
+    const outer = outerRef.current;
+    outer?.addEventListener("wheel", handleWheelScroll, { passive: true });
 
     return () => {
       xDrag();
       yDrag();
-      window.removeEventListener("wheel", handleWheelScroll);
+      outer?.removeEventListener("wheel", handleWheelScroll);
     };
   }, [x, y, isDragging]);
 
   return (
     <GridVariantContext.Provider value={variant}>
-      <div className="h-dvh overflow-hidden">
+      <div ref={outerRef} className="h-dvh overflow-hidden">
         <motion.div
           className="h-dvh overflow-hidden"
         >

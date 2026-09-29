@@ -40,7 +40,7 @@ export function HeroGalleryBg() {
                   key={`${img.id}-${j}`}
                   className="h-32 w-48 shrink-0 overflow-hidden rounded-xl bg-surface md:h-44 md:w-64"
                 >
-                  <img src={img.src} alt="" className="h-full w-full object-cover" />
+                  <img src={img.src} alt="" loading="lazy" decoding="async" className="h-full w-full object-cover" />
                 </div>
               ))}
             </div>

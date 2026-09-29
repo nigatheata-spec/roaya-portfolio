@@ -29,7 +29,7 @@ export function HeroInkFlow() {
   const { lang } = useLanguage();
   const stops = useRef<(SVGStopElement | null)[]>([]);
   const disp = useRef<SVGFEDisplacementMapElement>(null);
-  const turb = useRef<SVGFETurbulenceElement>(null);
+  const maskRect = useRef<SVGRectElement>(null);
 
   const scope = useGsapContext<HTMLElement>(() => {
     const setProgress = (p: number) => {
@@ -57,6 +57,8 @@ export function HeroInkFlow() {
       duration: 2.4,
       ease: 'power2.inOut',
       onUpdate: () => setProgress(state.p),
+      // The displacement only matters mid-reveal; drop the filter afterwards so it stops re-rasterising.
+      onComplete: () => maskRect.current?.removeAttribute('filter'),
     })
       .fromTo(
         disp.current,
@@ -75,15 +77,6 @@ export function HeroInkFlow() {
         { scale: 1, opacity: 1, duration: 2.8, ease: 'power2.out' },
         0,
       );
-
-    // Ambient drift so the ink edge keeps breathing after it settles.
-    gsap.to(turb.current, {
-      attr: { baseFrequency: '0.016 0.024' },
-      duration: 9,
-      repeat: -1,
-      yoyo: true,
-      ease: 'sine.inOut',
-    });
 
     return () => tl.kill();
   });
@@ -124,10 +117,9 @@ export function HeroInkFlow() {
           <defs>
             <filter id="ink-turbulence" x="-30%" y="-30%" width="160%" height="160%">
               <feTurbulence
-                ref={turb}
                 type="fractalNoise"
                 baseFrequency="0.011 0.019"
-                numOctaves="4"
+                numOctaves="2"
                 seed="11"
                 result="noise"
               />
@@ -150,6 +142,7 @@ export function HeroInkFlow() {
 
             <mask id="ink-mask">
               <rect
+                ref={maskRect}
                 x="-20%"
                 y="-20%"
                 width="140%"

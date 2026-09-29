@@ -19,25 +19,29 @@ interface BgVideoProps {
  */
 export function BgVideo({ src, poster, title, aspect = '16 / 9', className = '' }: BgVideoProps) {
   const rootRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [inView, setInView] = useState(false);
 
+  // Mount once the card nears the viewport, then play/pause as it enters and
+  // leaves so off-screen clips stop decoding.
   useEffect(() => {
     const el = rootRef.current;
     if (!el) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-          observer.disconnect();
-        }
+        if (entry.isIntersecting) setInView(true);
+        const v = videoRef.current;
+        if (!v) return;
+        if (entry.isIntersecting) void v.play().catch(() => {});
+        else v.pause();
       },
-      { rootMargin: '400px' },
+      { rootMargin: '150px' },
     );
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [inView]);
 
   return (
     <div
@@ -47,6 +51,7 @@ export function BgVideo({ src, poster, title, aspect = '16 / 9', className = '' 
     >
       {inView && (
         <video
+          ref={videoRef}
           className="absolute inset-0 h-full w-full object-cover"
           poster={poster}
           title={title}
@@ -54,7 +59,7 @@ export function BgVideo({ src, poster, title, aspect = '16 / 9', className = '' 
           loop
           playsInline
           autoPlay
-          preload="none"
+          preload="metadata"
         >
           <source src={src} type="video/mp4" />
         </video>

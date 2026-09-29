@@ -57,23 +57,9 @@ export function CTAMelt() {
     <section ref={scope} className="border-t border-line-soft/50 py-24 md:py-32">
       <div className="shell">
         <div className="relative overflow-hidden rounded-3xl border border-line-soft/70 bg-surface/50 px-6 py-24 md:px-16 md:py-32">
-          <svg className="absolute h-0 w-0" aria-hidden="true">
-            <defs>
-              <filter id="melt-goo">
-                <feGaussianBlur in="SourceGraphic" stdDeviation="13" result="blur" />
-                <feColorMatrix
-                  in="blur"
-                  mode="matrix"
-                  values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 24 -10"
-                />
-              </filter>
-            </defs>
-          </svg>
-
           <div
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 z-20 flex"
-            style={{ filter: 'url(#melt-goo)' }}
           >
             {Array.from({ length: BARS }).map((_, i) => (
               <span

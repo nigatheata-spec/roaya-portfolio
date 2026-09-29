@@ -34,6 +34,8 @@ export function DragGallery() {
                     src={image.src}
                     alt={image.alt}
                     className="pointer-events-none block h-auto w-full"
+                    loading="lazy"
+                    decoding="async"
                   />
                 </GridItem>
               ))}

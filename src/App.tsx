@@ -1,6 +1,5 @@
 import { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { SmoothScroll } from './components/SmoothScroll';
 import { ScrollToTop } from './components/ScrollToTop';
 import { Nav } from './components/Nav';
 import { Footer } from './components/Footer';
@@ -34,12 +33,10 @@ export default function App() {
   return (
     <LanguageProvider>
       <BrowserRouter>
-        <SmoothScroll>
           <ScrollToTop />
           <Nav />
           <Main />
           <Footer />
-        </SmoothScroll>
       </BrowserRouter>
     </LanguageProvider>
   );

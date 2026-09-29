@@ -1,26 +1,6 @@
-import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { principles, timeline, studio } from '../lib/content';
-import { gsap, useGsapContext, prefersReducedMotion } from '../lib/gsap';
-import { usePick, useLanguage } from '../lib/language';
-
-const DRAFTS = {
-  en: [
-    'We are a full-service creative agency.',
-    'We are storytellers with a passion for—',
-    'We make films.',
-  ],
-  ar: [
-    'نحن وكالة إبداعية متكاملة الخدمات.',
-    'نحن رواة قصص شغوفون بـ—',
-    'نحن نصنع الأفلام.',
-  ],
-};
-
-const FINAL = {
-  en: 'We make films, and we stay with them until they are finished.',
-  ar: 'نصنع الأفلام، ونبقى معها حتى تكتمل.',
-};
+import { usePick } from '../lib/language';
 
 const COPY = {
   eyebrow: { en: 'Studio', ar: 'الاستوديو' },
@@ -34,81 +14,27 @@ const COPY = {
   getInTouch: { en: 'Get in touch', ar: 'تواصل معنا' },
 };
 
+const FINAL = {
+  en: 'We make films, and we stay with them until they are finished.',
+  ar: 'نصنع الأفلام، ونبقى معها حتى تكتمل.',
+};
+
 export function Studio() {
   const pick = usePick();
-  const { lang } = useLanguage();
-  const typed = useRef<HTMLSpanElement>(null);
-
-  const scope = useGsapContext<HTMLDivElement>(() => {
-    const el = typed.current;
-    if (!el) return;
-
-    const drafts = DRAFTS[lang];
-    const final = FINAL[lang];
-
-    if (prefersReducedMotion()) {
-      el.textContent = final;
-      return;
-    }
-
-    const tl = gsap.timeline({ delay: 0.4 });
-    const write = (text: string, hold: number, erase: boolean) => {
-      const state = { n: 0 };
-      tl.to(state, {
-        n: text.length,
-        duration: text.length * 0.028,
-        ease: 'none',
-        onUpdate: () => {
-          el.textContent = text.slice(0, Math.round(state.n));
-        },
-      }).to({}, { duration: hold });
-
-      if (erase) {
-        tl.to(state, {
-          n: 0,
-          duration: text.length * 0.012,
-          ease: 'none',
-          onUpdate: () => {
-            el.textContent = text.slice(0, Math.round(state.n));
-          },
-        });
-      }
-    };
-
-    // The drafts get discarded; the last line is the one that stays.
-    drafts.forEach((d) => write(d, 0.55, true));
-    write(final, 0, false);
-
-    gsap.to('[data-caret]', {
-      opacity: 0,
-      duration: 0.45,
-      repeat: -1,
-      yoyo: true,
-      ease: 'steps(1)',
-    });
-
-    return () => tl.kill();
-  }, [lang]);
-
-  // Re-run cleanly if the language changes mid-animation.
-  useEffect(() => {
-    if (typed.current) typed.current.textContent = '';
-  }, [lang]);
 
   return (
-    <div ref={scope}>
+    <div>
       <section className="shell pb-16 pt-40">
         <p className="label mb-8 flex items-center gap-3">
           <span className="inline-block h-px w-8 bg-brulee" />
           {pick(COPY.eyebrow)}
         </p>
         <h1 className="text-mega font-extrabold">
-          {lang === 'ar' ? studio.arabicName : studio.name}
+          {studio.name}
         </h1>
 
-        <p className="mt-12 min-h-[5.5rem] max-w-3xl font-display text-[clamp(1.3rem,3vw,2.4rem)] font-medium leading-[1.2] tracking-[-0.03em] text-ink-100 sm:min-h-[7rem]">
-          <span ref={typed} />
-          <span data-caret className="ml-1 inline-block w-[3px] translate-y-1 self-center bg-brulee align-middle" style={{ height: '0.9em' }} />
+        <p className="mt-12 max-w-3xl font-display text-[clamp(1.3rem,3vw,2.4rem)] font-medium leading-[1.2] tracking-[-0.03em] text-ink-100">
+          {pick(FINAL)}
         </p>
       </section>
 
